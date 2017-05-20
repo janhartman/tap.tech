@@ -142,12 +142,12 @@ io.on('connection', function (socket) {
 io.sockets.on('connection', function (socket) {
     socket.on('command', function (data) {
         console.log(data);
-
+        var playerId = ids[socket.id];
         if(data.type === 'down'){
-            robot.press(data.key);
+            robot.press(game.keyBindings[playerId][data.key]);
         }
         else if(data.type === 'up'){
-            robot.release(data.key);
+            robot.release(game.keyBindings[playerId][data.key]);
         }
 
         //socket.broadcast.emit('command', data);

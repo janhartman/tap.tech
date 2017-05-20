@@ -13,7 +13,7 @@
     var right = 39;
     $("#left").on('touchstart', function(event){
         var ms = {
-          key: left,
+          key: "key1",
           type: "down"
         };
 
@@ -21,7 +21,7 @@
     })
     $("#left").on('touchend', function(event){
       var ms = {
-        key: left,
+        key: "key1",
         type: "up"
       };
         socket.emit('command', ms);
@@ -29,14 +29,14 @@
 
     $("#right").on('touchstart', function(event){
       var ms = {
-        key: right,
+        key: "key2",
         type: "down"
       };
       socket.emit('command', ms);
     })
     $("#right").on('touchend', function(event){
       var ms = {
-        key: right,
+        key: "key2",
         type: "up"
       };
         socket.emit('command', ms);
