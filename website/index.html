@@ -76,7 +76,7 @@
                         <div class="header-content-inner">
                             <!--<h1>New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1>-->
 							<h1>Tap. Play. Enjoy.</h1>
-							<h2>Play online games and enjoy quality time with you friends, having endless entertainment on your couch. Completely free, using equipment that is always there, near you.</h2>
+							<h2>Play online games and enjoy quality time with your friends, having endless entertainment on your couch. Completely free, using equipment that is always there, near you.</h2>
 							<br>
                             <a href="#download" class="btn btn-outline btn-xl page-scroll">Play now!</a>
                         </div>
@@ -91,7 +91,7 @@
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
                                     <!-- INSERT SCREEN IMAGE -->
-									<iframe src="http://193.2.177.82/game" style="width: 100%; height: 100%;"></iframe>
+									<!--<iframe src="http://193.2.177.82/game" style="width: 100%; height: 100%;"></iframe>-->
 									<!--<img src="img/demo-screen-1.jpg" class="img-responsive" alt="">-->
                                 </div>
                                 <div class="button">
@@ -217,6 +217,50 @@
             </ul>
         </div>
     </section>-->
+		
+	<section class="bg-primary text-center">
+		<div class="container">
+			<h2>A list of currently tested games:</h2>
+			
+		    <!-- jQuery -->
+		    <script src="lib/jquery/jquery.min.js"></script>
+			
+			<script>
+				
+				$(document).ready(function() {
+					var results = "";
+						$.get("http://193.2.177.82:8080/api/games/all",function(data){
+				  		results = JSON.parse(data);
+					});
+					console.log(results);
+					console.log(results[0].id);
+					console.log(results[0].name);
+					console.log(results[0].url);
+					console.log(results[0].numOfPlayers);
+					console.log(results[0].keyBindings[0]);
+					
+					
+            		<ul class="list-inline list-social">
+                		<li>
+                    		<a href="#"><i class="fa fa-twitter"></i></a>
+                		</li>
+                		<li>
+                    		<a href="#"><i class="fa fa-facebook"></i></a>
+                		</li>
+                		<li>
+                    		<a href="#"><i class="fa fa-google-plus"></i></a>
+                		</li>
+            		</ul>
+					
+					
+					
+					
+					
+				});
+				
+			</script>
+		</div>
+	</section>
 
     <footer id="contact">
         <div class="container">
@@ -238,8 +282,7 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="lib/jquery/jquery.min.js"></script>
+    
 
     <!-- Bootstrap Core JavaScript -->
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
