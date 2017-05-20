@@ -171,7 +171,7 @@ header .header-content {
 }
 header .header-content .header-content-inner {
   position: relative;
-  max-width: 500px;
+  max-width: 200px; /*FIX FOR SAFARI*/
   margin: 0 auto;
 }
 header .header-content .header-content-inner h1 {
