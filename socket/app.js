@@ -12,7 +12,7 @@ var ip = require('ip');
 
 var app = express();
 var server = http.Server(app);
-var io = socketio(http);
+var io = socketio(server);
 
 // the config (URL to webserver...)
 var config = require('./config.json');
@@ -22,6 +22,7 @@ var clients = {};
 
 // the keymaps for the current game
 var game = {};
+
 
 
 /**
@@ -67,6 +68,11 @@ app.get('/shutdown', function(req, res) {
  */
 
 app.get('/', function (req, res) {
+    if (Object.keys(game).length == 0) {
+        console.log("Game not started yet");
+        return res.sendFile(path.join(__dirname, '..', 'client', 'gameNotStarted.html'));
+    }
+
     var numOfClients = Object.keys(clients).length;
 
     if (numOfClients == game.numOfPlayers) {
@@ -108,7 +114,7 @@ io.on('connection', function (socket) {
 
     }
 
-    console.log("Adding socket + " + socket.id);
+    console.log("Adding socket " + socket.id);
     clients[socket.id] = socket;
 
     socket.on('disconnect', function () {
@@ -125,9 +131,19 @@ io.on('connection', function (socket) {
  */
 
 io.sockets.on('connection', function (socket) {
-    socket.on('command', function (data) {
+    socket.on('button1', function (data) {
         console.log(data);
     });
+    socket.on('button2', function (data) {
+        console.log(data);
+    });
+    socket.on('button3', function (data) {
+        console.log(data);
+    });
+    socket.on('button4', function (data) {
+        console.log(data);
+    });
+
 });
 
 
