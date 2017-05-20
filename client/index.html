@@ -9,12 +9,6 @@
 <script>
   $(function () {
     var socket = io();
-    $('form').submit(function(){
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
-
     var left = 37;
     var right = 39;
     $("#left").on('touchstart', function(event){
@@ -69,16 +63,16 @@
     </style>
   </head>
   <body>
-    <div id="levo" style="float:left;width:50%;height:100%;font-size:40px;background-color:#EEF0F3">
-   <button id="levo1" style="
+    <div id="left" style="float:left;width:50%;height:100%;font-size:40px;background-color:#EEF0F3">
+   <button id="left1" style="
   width:80%;height:80%;margin:10%;background-color:#2e466e;border-radius:22px;
   border:2px solid #1f2f47;color:#ffffff;
   font-family:Arial;
   font-size:120px;">&#8678</button>
     <!--<button id="levo1" style="width:80%;height:80%;font-size:20px;color:blue;margin:10%">levo </button>-->
     </div>
-    <div id="desno" style="float:right;width:50%;height:100%;font-size:40px;background-color:#2e466e">
-      <button id="levo1" style="
+    <div id="right" style="float:right;width:50%;height:100%;font-size:40px;background-color:#2e466e">
+      <button id="right1" style="
   width:80%;height:80%;margin:10%;background-color:#EEF0F3;border-radius:22px;
   border:2px solid #1f2f47;color:#2e466e;
   font-family:Arial;
