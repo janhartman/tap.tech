@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>TapFreak</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js'></script>
@@ -9,8 +9,6 @@
 <script>
   $(function () {
     var socket = io();
-    var left = 37;
-    var right = 39;
     $("#left").on('touchstart', function(event){
         var ms = {
           key: "key1",
