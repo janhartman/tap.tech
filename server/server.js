@@ -13,7 +13,7 @@ var games = require('./game.json');
 app.get('/api/games/:gameId', function(req, res) {
    var gameId = req.params.gameId;
 
-   if (gameId == undefined) {
+   if (!gameId) {
        return res.sendStatus(400);
    }
 
@@ -21,7 +21,9 @@ app.get('/api/games/:gameId', function(req, res) {
        return res.send(games);
    }
 
-   for (var game in games) {
+   for (var idx in games) {
+       console.log(games);
+       var game = games[idx];
        if (game.id.toString() == gameId.toString()) {
            return res.send(game);
        }

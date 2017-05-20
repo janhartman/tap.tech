@@ -41,11 +41,10 @@ app.get('/game/:name', function(req, res) {
 
         game = body;
 
-/*
-        for (var socket in Object.keys(clients)) {
-            clients[socket].disconnect(true);
-        }
-*/
+        io.sockets.sockets.forEach(function(s) {
+            s.disconnect(true);
+        });
+
 
         clients = {};
         ids = {};
