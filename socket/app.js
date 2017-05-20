@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var fs = require('fs');
 var express = require('express');
@@ -5,6 +7,8 @@ var http = require('http');
 var socketio = require('socket.io');
 var ks = require('node-key-sender');
 var request = require('request');
+var opn = require('opn');
+var ip = require('ip');
 
 var app = express();
 var server = http.Server(app);
@@ -21,7 +25,7 @@ var game = {};
 
 
 /**
- * Getting game info
+ * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
  */
 app.get('/game/:name', function(req, res) {
@@ -32,17 +36,29 @@ app.get('/game/:name', function(req, res) {
             return res.sendStatus(500);
         }
 
-        game = body.game;
+        game = body;
 
-        // TODO set up the rest of the server - open webpage with socket server URL
+        for (var socket in Object.keys(clients)) {
+            socket.disconnect(true);
+        }
 
         clients = {};
 
+        // load the template and inject ip, then save and display
+        var ipAddress = ip.address();
+        var template = fs.readFileSync('game.html', {encoding: 'utf8'});
+        var toDisplay = template.replace('{ip}', ipAddress + ':3000');
+
+        fs.writeFileSync('newgame.html', toDisplay);
+        opn(path.join(__dirname, 'newgame.html'));
 
     });
     res.sendStatus(200);
 });
 
+app.get('/shutdown', function(req, res) {
+   process.exit(0);
+});
 
 
 /**
@@ -55,12 +71,12 @@ app.get('/', function (req, res) {
 
     if (numOfClients == game.numOfPlayers) {
         console.log('All available spots are filled');
-        res.sendFile(path.join(__dirname, 'client', 'tooManyPlayers.html'));
+        res.sendFile(path.join(__dirname, '..', 'client', 'tooManyPlayers.html'));
     }
 
     else if (numOfClients > game.numOfPlayers) {
         console.log('Error: there are more clients than allowed players');
-        res.sendFile(path.join(__dirname, 'client', 'tooManyPlayers.html'));
+        res.sendFile(path.join(__dirname, '..', 'client', 'tooManyPlayers.html'));
 
     }
 
@@ -68,7 +84,7 @@ app.get('/', function (req, res) {
     // potentially request UIs from main web server
     else {
         console.log("Sending HTML to client");
-        res.sendFile( + path.join(__dirname, 'client', 'index.html'));
+        res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
     }
 
 });
@@ -79,6 +95,20 @@ app.get('/', function (req, res) {
 
 io.on('connection', function (socket) {
     console.info('New client connected (id=' + socket.id + ').');
+
+    var numOfClients = Object.keys(clients).length;
+
+    if (numOfClients == game.numOfPlayers) {
+        console.log('All available spots are filled');
+        return socket.disconnect(true);
+    }
+    else if (numOfClients > game.numOfPlayers) {
+        console.log('Error: there are more clients than allowed players');
+        return socket.disconnect(true);
+
+    }
+
+    console.log("Adding socket + " + socket.id);
     clients[socket.id] = socket;
 
     socket.on('disconnect', function () {

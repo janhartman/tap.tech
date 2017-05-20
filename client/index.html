@@ -15,49 +15,38 @@
       return false;
     });
 
-    var levo = 37;
-    var desno = 39;
-    $("#levo").on('touchstart', function(event){
+    var left = 37;
+    var right = 39;
+    $("#left").on('touchstart', function(event){
         var ms = {
-          key: levo,
+          key: left,
           type: "down"
         };
 
         socket.emit('ukaz', ms);
     })
-    $("#levo").on('touchend', function(event){
+    $("#left").on('touchend', function(event){
       var ms = {
-        key: levo,
+        key: left,
         type: "up"
       };
         socket.emit('ukaz', ms);
     })
 
-    $("#desno").on('touchstart', function(event){
+    $("#right").on('touchstart', function(event){
       var ms = {
-        key: desno,
+        key: right,
         type: "down"
       };
       socket.emit('ukaz', ms);
     })
-    $("#desno").on('touchend', function(event){
+    $("#right").on('touchend', function(event){
       var ms = {
-        key: desno,
+        key: right,
         type: "up"
       };
         socket.emit('ukaz', ms);
     })
-
-
-
-    socket.on('myClick', function (data) {
-        $(data.id).trigger('click');
-    })
-
-
-
-
-
 
 
 
@@ -76,8 +65,8 @@
     </style>
   </head>
   <body>
-    <button id="levo" style="float:left;width:50%;height:200px;font-size:40px"></button>
-    <button id="desno" style="width:50%;height:200px;font-size:40px"></button>
+    <button id="left" style="float:left;width:50%;height:200px;font-size:40px"></button>
+    <button id="right" style="width:50%;height:200px;font-size:40px"></button>
 
     <ul id="messages"></ul>
     <form action="">
