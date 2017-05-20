@@ -6,20 +6,20 @@
     "numOfPlayers": 4,
     "keyBindings": {
       "player1": {
-        "key1": "left",
-        "key2": "right"
+        "key1": "LEFT",
+        "key2": "RIGHT"
       },
       "player2": {
-        "key1": "a",
-        "key2": "s"
+        "key1": "A",
+        "key2": "S"
       },
       "player3": {
-        "key1": "g",
-        "key2": "h"
+        "key1": "G",
+        "key2": "H"
       },
       "player4": {
-        "key1": "k",
-        "key2": "l"
+        "key1": "K",
+        "key2": "L"
       }
     }
 
@@ -31,14 +31,14 @@
     "numOfPlayers": 2,
     "keyBindings": {
       "player1": {
-        "key1": "left",
-        "key2": "right",
-        "key3": "space"
+        "key1": "LEFT",
+        "key2": "RIGHT",
+        "key3": "SPACE"
       },
       "player2": {
-        "key1": "a",
-        "key2": "d",
-        "key3": "w"
+        "key1": "A",
+        "key2": "D",
+        "key3": "W"
       }
     }
 
