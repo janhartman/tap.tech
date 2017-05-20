@@ -219,46 +219,34 @@
     </section>-->
 		
 	<section class="bg-primary text-center">
-		<div class="container">
+		<div class="container" id="gameList">
 			<h2>A list of currently tested games:</h2>
 			
 		    <!-- jQuery -->
 		    <script src="lib/jquery/jquery.min.js"></script>
 			
-			<script>
-				
+			
+			
+			<script type="text/javascript">
+
 				$(document).ready(function() {
 					var results = "";
-						$.get("http://193.2.177.82:8080/api/games/all",function(data){
-				  		results = JSON.parse(data);
-					});
-					console.log(results);
-					console.log(results[0].id);
-					console.log(results[0].name);
-					console.log(results[0].url);
-					console.log(results[0].numOfPlayers);
-					console.log(results[0].keyBindings[0]);
+						$.get("http://193.2.179.59/api/games/all",function(data){
+				  		//results = JSON.parse(data);
 					
-					
-            		<ul class="list-inline list-social">
-                		<li>
-                    		<a href="#"><i class="fa fa-twitter"></i></a>
-                		</li>
-                		<li>
-                    		<a href="#"><i class="fa fa-facebook"></i></a>
-                		</li>
-                		<li>
-                    		<a href="#"><i class="fa fa-google-plus"></i></a>
-                		</li>
-            		</ul>
-					
-					
-					
-					
-					
+						$("#gameList").append("<ul>");
+						for (var i in data) {
+							//console.log(results[i][0]);
+							$("#gameList").append("<li style='font-size:1.4em;'><a href='" + data[i].url + "'>" + data[i].name + "</a> - max number of players: " + data[i].numOfPlayers + "</li>");
+						}
+						
+						$("#gameList").append("</ul>");
+					})
 				});
 				
 			</script>
+
+			
 		</div>
 	</section>
 

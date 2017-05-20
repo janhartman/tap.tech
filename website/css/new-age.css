@@ -162,7 +162,7 @@ header {
   background-color: #1B7B34;
   
   /* HIGH FIX FOR GAME */
-  height: 900px;
+  height: 1450px;
 }
 header .header-content {
   text-align: center;
@@ -195,7 +195,7 @@ header .device-container .screen img {
 }
 @media (min-width: 768px) {
   header {
-    min-height: 100%;
+    min-height: 450px;
   }
   header .header-content {
     text-align: left;
@@ -219,8 +219,13 @@ header .device-container .screen img {
   }
 }
 @media (min-width: 992px) {
+header {
+    /* HIGH FIX FOR GAME */
+    min-height: 1050px;
+}
   header .header-content .header-content-inner h1 {
     font-size: 50px;
+	max-width: 200px; /*FIX FOR SAFARI*/
   }
 }
 section {
@@ -259,6 +264,10 @@ section.download .badges .badge-link img {
   }
 }
 @media (min-width: 768px) {
+	header {
+	    /* HIGH FIX FOR GAME */
+	    height: 900px;
+	}
   section.download h2 {
     font-size: 70px;
   }
