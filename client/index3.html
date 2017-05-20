@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>TapFreak</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js'></script>
@@ -9,44 +9,50 @@
 <script>
   $(function () {
     var socket = io();
-    $('form').submit(function(){
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
-
-    var left = 37;
-    var right = 39;
     $("#left").on('touchstart', function(event){
         var ms = {
-          key: left,
+          key: "key1",
           type: "down"
         };
 
-        socket.emit('ukaz', ms);
+        socket.emit('command', ms);
     })
     $("#left").on('touchend', function(event){
       var ms = {
-        key: left,
+        key: "key1",
         type: "up"
       };
-        socket.emit('ukaz', ms);
+        socket.emit('command', ms);
     })
 
     $("#right").on('touchstart', function(event){
-      var ms = {
-        key: right,
-        type: "down"
-      };
-      socket.emit('ukaz', ms);
-    })
-    $("#right").on('touchend', function(event){
-      var ms = {
-        key: right,
-        type: "up"
-      };
-        socket.emit('ukaz', ms);
-    })
+          var ms = {
+              key: "key2",
+              type: "down"
+          };
+          socket.emit('command', ms);
+      })
+      $("#right").on('touchend', function(event){
+          var ms = {
+              key: "key2",
+              type: "up"
+          };
+          socket.emit('command', ms);
+      })
+      $("#up").on('touchstart', function(event){
+          var ms = {
+              key: "key3",
+              type: "down"
+          };
+          socket.emit('command', ms);
+      })
+      $("#up").on('touchend', function(event){
+          var ms = {
+              key: "key3",
+              type: "up"
+          };
+          socket.emit('command', ms);
+      })
 
   });
   window.oncontextmenu = function(event) {

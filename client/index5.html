@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>TabFreak</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js'></script>
@@ -9,44 +9,79 @@
 <script>
   $(function () {
     var socket = io();
-    $('form').submit(function(){
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
+      $("#left").on('touchstart', function(event){
+          var ms = {
+              key: "key1",
+              type: "down"
+          };
 
-    var left = 37;
-    var right = 39;
-    $("#left").on('touchstart', function(event){
-        var ms = {
-          key: left,
-          type: "down"
-        };
+          socket.emit('command', ms);
+      })
+      $("#left").on('touchend', function(event){
+          var ms = {
+              key: "key1",
+              type: "up"
+          };
+          socket.emit('command', ms);
+      })
 
-        socket.emit('ukaz', ms);
-    })
-    $("#left").on('touchend', function(event){
-      var ms = {
-        key: left,
-        type: "up"
-      };
-        socket.emit('ukaz', ms);
-    })
+      $("#right").on('touchstart', function(event){
+          var ms = {
+              key: "key2",
+              type: "down"
+          };
+          socket.emit('command', ms);
+      })
+      $("#right").on('touchend', function(event){
+          var ms = {
+              key: "key2",
+              type: "up"
+          };
+          socket.emit('command', ms);
+      })
+      $("#up").on('touchstart', function(event){
+          var ms = {
+              key: "key3",
+              type: "down"
+          };
+          socket.emit('command', ms);
+      })
+      $("#up").on('touchend', function(event){
+          var ms = {
+              key: "key3",
+              type: "up"
+          };
+          socket.emit('command', ms);
+      })
 
-    $("#right").on('touchstart', function(event){
-      var ms = {
-        key: right,
-        type: "down"
-      };
-      socket.emit('ukaz', ms);
-    })
-    $("#right").on('touchend', function(event){
-      var ms = {
-        key: right,
-        type: "up"
-      };
-        socket.emit('ukaz', ms);
-    })
+      $("#down").on('touchstart', function(event){
+          var ms = {
+              key: "key4",
+              type: "down"
+          };
+          socket.emit('command', ms);
+      })
+      $("#down").on('touchend', function(event){
+          var ms = {
+              key: "key4",
+              type: "up"
+          };
+          socket.emit('command', ms);
+      })
+      $("#shoot").on('touchstart', function(event){
+          var ms = {
+              key: "key5",
+              type: "down"
+          };
+          socket.emit('command', ms);
+      })
+      $("#shoot").on('touchend', function(event){
+          var ms = {
+              key: "key5",
+              type: "up"
+          };
+          socket.emit('command', ms);
+      })
 
   });
   window.oncontextmenu = function(event) {
