@@ -237,12 +237,20 @@
 						$("#gameList").append("<ul>");
 						for (var i in data) {
 							//console.log(results[i][0]);
-							$("#gameList").append("<li style='font-size:1.4em;'><a href='" + data[i].url + "'>" + data[i].name + "</a> - max number of players: " + data[i].numOfPlayers + "</li>");
+							$("#gameList").append("<li style='font-size:1.4em;'><a href='" + data[i].url + "'onclick=playGameById('" + data[i].id + "')>" + data[i].name + "</a> - max number of players: " + data[i].numOfPlayers + "</li>");
 						}
 						
 						$("#gameList").append("</ul>");
 					})
 				});
+				
+				function playGameById(gameId){
+					
+					$.get("http://localhost:3000/game/" + gameId,function(data2){
+						console.log("ID: " + gameId);
+						console.log(data2);
+					});
+				}
 				
 			</script>
 
