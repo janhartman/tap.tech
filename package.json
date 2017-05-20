@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/janhartman/tap.tech#readme",
   "dependencies": {
+    "cors": "^2.8.3",
     "express": "^4.15.3",
     "ip": "^1.1.5",
     "kbm-robot": "0.0.4",
     "opn": "^5.0.0",
+    "randomstring": "^1.1.5",
     "request": "^2.81.0",
     "socket.io": "^2.0.1"
   }

@@ -5,7 +5,7 @@ Play online games and enjoy quality time with you friends, having endless entert
 
 
 authors:
-Ladislav Škufca
-Aljaž Turk
-Jan Hartman
-Jan Blatnik
+* Ladislav Škufca  
+* Aljaž Turk  
+* Jan Hartman  
+* Jan Blatnik  

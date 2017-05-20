@@ -9,6 +9,7 @@ var robot = require("kbm-robot");
 var request = require('request');
 var opn = require('opn');
 var ip = require('ip');
+var randomstring = require("randomstring");
 
 var app = express();
 var server = http.Server(app);
@@ -45,9 +46,11 @@ app.get('/game/:name', function(req, res) {
         ids = {};
 
         // load the template and inject ip, then save and display
+        var code = randomstring.generate({length: 5, charset: 'alphabetic', capitalization: 'lowercase'});
 
         var template = fs.readFileSync('game.html', {encoding: 'utf8'});
         var toDisplay = template.replace('{ip}', ipAddress + ':3000');
+        toDisplay = toDisplay.replace('{code}', code);
 
         fs.writeFileSync('newgame.html', toDisplay);
         opn(path.join(__dirname, 'newgame.html'));
@@ -125,9 +128,10 @@ io.on('connection', function (socket) {
 
     }
 
-    console.log("Adding socket " + socket.id);
     clients[socket.id] = socket;
-    ids[socket.id] = "player" + Object.keys(clients).length;
+    var playerId = "player" + Object.keys(clients).length;
+    ids[socket.id] = playerId;
+    console.log("Binding socket " + socket.id + " to player id " + playerId);
 
     socket.on('disconnect', function () {
         if (clients[socket.id]) {
