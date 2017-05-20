@@ -13,6 +13,7 @@ var ip = require('ip');
 var app = express();
 var server = http.Server(app);
 var io = socketio(server);
+var ipAddress = ip.address();
 
 robot.startJar();
 
@@ -27,8 +28,11 @@ var ids = {};
 // the keymaps for the current game
 var game = {};
 
+<<<<<<< HEAD
 var app2 = express();
 
+=======
+>>>>>>> b27ce1660c2bb91dbecccd4ca678e0a7424e3175
 /**
  * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
@@ -42,17 +46,20 @@ app2.get('/game/:name', function(req, res) {
         }
 
         game = JSON.parse(body);
+<<<<<<< HEAD
         /*
         io.sockets.forEach(function(s) {
             s.disconnect(true);
         });
 */
+=======
+>>>>>>> b27ce1660c2bb91dbecccd4ca678e0a7424e3175
 
         clients = {};
         ids = {};
 
         // load the template and inject ip, then save and display
-        var ipAddress = ip.address();
+
         var template = fs.readFileSync('game.html', {encoding: 'utf8'});
         var toDisplay = template.replace('{ip}', ipAddress + ':3001');
 
@@ -104,10 +111,13 @@ app2.get('/', function (req, res) {
 
 });
 
+<<<<<<< HEAD
 app2.listen(3001, function () {
     console.log('Socket server listening on port 3000');
 });
 
+=======
+>>>>>>> b27ce1660c2bb91dbecccd4ca678e0a7424e3175
 
 /**
  * Sockets: clients connecting and disconnecting
@@ -155,7 +165,10 @@ io.sockets.on('connection', function (socket) {
         console.log(game.id)
         console.log(game.keyBindings)
         if(data.type === 'down'){
+<<<<<<< HEAD
 
+=======
+>>>>>>> b27ce1660c2bb91dbecccd4ca678e0a7424e3175
             robot.press(game.keyBindings[playerId][data.key]).go();
         }
         else if(data.type === 'up'){
