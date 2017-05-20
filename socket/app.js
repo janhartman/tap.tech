@@ -43,11 +43,6 @@ app.get('/game/:name', function(req, res) {
         }
 
         game = JSON.parse(body);
-        /*
-        io.sockets.forEach(function(s) {
-            s.disconnect(true);
-        });
-*/
 
 
         clients = {};
