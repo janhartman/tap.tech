@@ -1,0 +1,19 @@
+{
+  "name": "tap.tech",
+  "version": "1.0.0",
+  "description": "DragonHack 2017 repo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janhartman/tap.tech.git"
+  },
+  "author": "FletTeam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janhartman/tap.tech/issues"
+  },
+  "homepage": "https://github.com/janhartman/tap.tech#readme"
+}
