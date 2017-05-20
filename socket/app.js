@@ -28,11 +28,9 @@ var ids = {};
 // the keymaps for the current game
 var game = {};
 
-<<<<<<< HEAD
 var app2 = express();
 
-=======
->>>>>>> b27ce1660c2bb91dbecccd4ca678e0a7424e3175
+
 /**
  * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
@@ -46,14 +44,12 @@ app2.get('/game/:name', function(req, res) {
         }
 
         game = JSON.parse(body);
-<<<<<<< HEAD
         /*
         io.sockets.forEach(function(s) {
             s.disconnect(true);
         });
 */
-=======
->>>>>>> b27ce1660c2bb91dbecccd4ca678e0a7424e3175
+
 
         clients = {};
         ids = {};
@@ -106,18 +102,20 @@ app2.get('/', function (req, res) {
     // potentially request UIs from main web server
     else {
         console.log("Sending HTML to client");
-        res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+        switch (game.keys) {
+            case 2:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+            case 3:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index3.html'));
+            case 4:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index4.html'));
+        }
+
     }
 
 });
 
-<<<<<<< HEAD
-app2.listen(3001, function () {
-    console.log('Socket server listening on port 3000');
-});
 
-=======
->>>>>>> b27ce1660c2bb91dbecccd4ca678e0a7424e3175
 
 /**
  * Sockets: clients connecting and disconnecting
@@ -152,23 +150,21 @@ io.on('connection', function (socket) {
 
 /**
  * Sockets: clients sending commands
- * TODO: use keysender to simulate keypresses
  */
 
 io.sockets.on('connection', function (socket) {
     socket.on('command', function (data) {
         //console.log(data);
-        var playerId = ids[socket.id];
-        console.log(ids);
-        console.log(playerId);
-        console.log(game)
-        console.log(game.id)
-        console.log(game.keyBindings)
-        if(data.type === 'down'){
-<<<<<<< HEAD
 
-=======
->>>>>>> b27ce1660c2bb91dbecccd4ca678e0a7424e3175
+
+        var playerId = ids[socket.id];
+        if (!game.keyBindings || !game.keyBindings[playerId]) {
+            console.log("Game not set or player number not allowed");
+            return;
+        }
+
+        if(data.type === 'down'){
+
             robot.press(game.keyBindings[playerId][data.key]).go();
         }
         else if(data.type === 'up'){
@@ -186,3 +182,7 @@ io.sockets.on('connection', function (socket) {
 server.listen(3000, function () {
     console.log('Socket server listening on port 3000');
 });
+
+var ngrok = require('ngrok');
+
+ngrok.connect(3000, function (err, url) {}); // https://757c1652.ngrok.io -> http://localhost:9090
