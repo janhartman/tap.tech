@@ -6,8 +6,8 @@
     "numOfPlayers": 4,
     "keyBindings": {
       "player1": {
-        "key1": "left",
-        "key2": "right"
+        "key1": "LEFT",
+        "key2": "RIGHT"
       },
       "player2": {
         "key1": "a",
