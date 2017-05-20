@@ -13,11 +13,13 @@ var ip = require('ip');
 var app = express();
 var server = http.Server(app);
 var io = socketio(server);
+var ipAddress = ip.address();
 
 robot.startJar();
 
 // the config (URL to webserver...)
 var config = require('./config.json');
+//var game = require('./../server/game.json');
 
 // the connected clients (phones)
 var clients = {};
@@ -26,12 +28,14 @@ var ids = {};
 // the keymaps for the current game
 var game = {};
 
+var app2 = express();
+
 
 /**
  * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
  */
-app.get('/game/:name', function(req, res) {
+app2.get('/game/:name', function(req, res) {
     var gameName = req.params.name;
     request.get(config.webURL + '/api/games/' + gameName, function(err, response, body) {
         if (err) {
@@ -39,20 +43,21 @@ app.get('/game/:name', function(req, res) {
             return res.sendStatus(500);
         }
 
-        game = body;
-
-        io.sockets.sockets.forEach(function(s) {
+        game = JSON.parse(body);
+        /*
+        io.sockets.forEach(function(s) {
             s.disconnect(true);
         });
+*/
 
 
         clients = {};
         ids = {};
 
         // load the template and inject ip, then save and display
-        var ipAddress = ip.address();
+
         var template = fs.readFileSync('game.html', {encoding: 'utf8'});
-        var toDisplay = template.replace('{ip}', ipAddress + ':3000');
+        var toDisplay = template.replace('{ip}', ipAddress + ':3001');
 
         fs.writeFileSync('newgame.html', toDisplay);
         opn(path.join(__dirname, 'newgame.html'));
@@ -64,7 +69,7 @@ app.get('/game/:name', function(req, res) {
 /**
  * Shut the server down.
  */
-app.get('/shutdown', function(req, res) {
+app2.get('/shutdown', function(req, res) {
    process.exit(0);
 });
 
@@ -74,7 +79,7 @@ app.get('/shutdown', function(req, res) {
  * Serve the HTML with client-side socket JS code based on the current game.
  */
 
-app.get('/', function (req, res) {
+app2.get('/', function (req, res) {
     if (Object.keys(game).length == 0) {
         console.log("Game not started yet");
         return res.sendFile(path.join(__dirname, '..', 'client', 'gameNotStarted.html'));
@@ -97,10 +102,20 @@ app.get('/', function (req, res) {
     // potentially request UIs from main web server
     else {
         console.log("Sending HTML to client");
-        res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+        switch (game.keys) {
+            case 2:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+            case 3:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index3.html'));
+            case 4:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index4.html'));
+        }
+
     }
 
 });
+
+
 
 /**
  * Sockets: clients connecting and disconnecting
@@ -135,21 +150,28 @@ io.on('connection', function (socket) {
 
 /**
  * Sockets: clients sending commands
- * TODO: use keysender to simulate keypresses
  */
 
 io.sockets.on('connection', function (socket) {
     socket.on('command', function (data) {
-        console.log(data);
+        //console.log(data);
+
+
         var playerId = ids[socket.id];
-        if(data.type === 'down'){
-            robot.press(game.keyBindings[playerId][data.key]);
-        }
-        else if(data.type === 'up'){
-            robot.release(game.keyBindings[playerId][data.key]);
+        if (!game.keyBindings || !game.keyBindings[playerId]) {
+            console.log("Game not set or player number not allowed");
+            return;
         }
 
-        //socket.broadcast.emit('command', data);
+        if(data.type === 'down'){
+
+            robot.press(game.keyBindings[playerId][data.key]).go();
+        }
+        else if(data.type === 'up'){
+            robot.release(game.keyBindings[playerId][data.key]).go();
+        }
+
+        socket.broadcast.emit('command', data);
 
     });
 
@@ -160,3 +182,7 @@ io.sockets.on('connection', function (socket) {
 server.listen(3000, function () {
     console.log('Socket server listening on port 3000');
 });
+
+var ngrok = require('ngrok');
+
+ngrok.connect(3000, function (err, url) {}); // https://757c1652.ngrok.io -> http://localhost:9090

@@ -8,42 +8,47 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
   $(function () {
-    var socket = io('http://193.2.177.82:3000');
+    var socket = io();
+    $('form').submit(function(){
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+
     var left = 37;
     var right = 39;
     $("#left").on('touchstart', function(event){
         var ms = {
-          key: "key1",
+          key: left,
           type: "down"
         };
 
-        socket.emit('command', ms);
+        socket.emit('ukaz', ms);
     })
     $("#left").on('touchend', function(event){
       var ms = {
-        key: "key1",
+        key: left,
         type: "up"
       };
-        socket.emit('command', ms);
+        socket.emit('ukaz', ms);
     })
 
     $("#right").on('touchstart', function(event){
       var ms = {
-        key: "key2",
+        key: right,
         type: "down"
       };
-      socket.emit('command', ms);
+      socket.emit('ukaz', ms);
     })
     $("#right").on('touchend', function(event){
       var ms = {
-        key: "key2",
+        key: right,
         type: "up"
       };
-        socket.emit('command', ms);
+        socket.emit('ukaz', ms);
     })
 
   });
-
   window.oncontextmenu = function(event) {
      event.preventDefault();
      event.stopPropagation();
@@ -60,9 +65,23 @@
       form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
     /*  form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }*/
+
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+
+      }
+      div {
+        font-size:40px;
+
+      }
+      button {
+        width:80%;height:80%; margin: 5% 10%; background-color:#2e466e;border-radius:22px;
+        border:2px solid #1f2f47;color:#ffffff;
+        font-family:Arial;
+        font-size:120px;
+      }
+
       button.noselect {
         -webkit-touch-callout: none; /* iOS Safari */
           -webkit-user-select: none; /* Safari */
@@ -72,31 +91,54 @@
                   user-select: none; /* Non-prefixed version, currently
                                         supported by Chrome and Opera */
         }
+      @media all and (orientation:portrait) {
+        div.up{
+          position:absolute;left:0%;top:70%;width:100%;height:30%;background-color:green;
+        }
+        div.left{
+          position:absolute;left:0%;width:50%;height:70%;background-color:red;
+        }
+        div.right{
+          position:absolute;left:50%;width:50%;height:70%;background-color:blue;
+        }
+        button.right{
+          margin-top:25%;
+        }
+        button.shoot{
+          margin:5% 10%;
+          font-size: 70px;
+        }
+      }
+      @media all and (orientation:landscape) {
+        /* Styles for Landscape screen */
+        div.up{
+          position:absolute;left:0%;top:60%;width:100%;height:40%;background-color:green;
+        }
+        div.left{
+          position:absolute;left:0%;width:50%;height:60%;background-color:red;
+        }
+        div.right{
+          position:absolute;left:50%;width:50%;height:60%;background-color:blue;
+        }
+        button.shoot{
+          margin:2% 10%;
+          font-size: 75px;
+        }
+      }
     </style>
   </head>
   <body>
-    <div id="left" style="float:left;width:50%;height:100%;font-size:40px;background-color:#EEF0F3">
-
-   <button id="left1" class="noselect" style="
-  width:80%;height:80%;margin:10%;background-color:#2e466e;border-radius:22px;
-  border:2px solid #1f2f47;color:#ffffff;
-  font-family:Arial;
-  font-size:120px;">&#8678</button>
+    <div id="up" class="up">
+      <button id="up1" class="up noselect shoot"> &#9889;</button>
     <!--<button id="levo1" style="width:80%;height:80%;font-size:20px;color:blue;margin:10%">levo </button>-->
     </div>
-    <div id="right" style="float:right;width:50%;height:100%;font-size:40px;background-color:#2e466e">
 
-      <button class="noselect" id="right1" style="
-  width:80%;height:80%;margin:10%;background-color:#EEF0F3;border-radius:22px;
-  border:2px solid #1f2f47;color:#2e466e;
-  font-family:Arial;
-  font-size:120px;">&#8680</button>
+    <div id="left" class="left">
+    <button id="left1" class="right noselect" >&#8678;</button>
+    <!--<button id="levo1" style="width:80%;height:80%;font-size:20px;color:blue;margin:10%">levo </button>-->
+    </div>
+    <div id="right" class="right">
+<button id="right1" class="right noselect">&#8680;</button>
      </div>
-<!--
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    -->
   </body>
 </html>
