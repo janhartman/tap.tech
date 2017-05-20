@@ -92,7 +92,15 @@ app.get('/', function (req, res) {
     // potentially request UIs from main web server
     else {
         console.log("Sending HTML to client");
-        res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+        switch (game.keys) {
+            case 2:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+            case 3:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index3.html'));
+            case 4:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index4.html'));
+        }
+
     }
 
 });
@@ -131,13 +139,18 @@ io.on('connection', function (socket) {
 
 /**
  * Sockets: clients sending commands
- * TODO: use keysender to simulate keypresses
  */
 
 io.sockets.on('connection', function (socket) {
     socket.on('command', function (data) {
-        console.log(data);
+        //console.log(data);
+
         var playerId = ids[socket.id];
+        if (!game.keyBindings || !game.keyBindings[playerId]) {
+            console.log("Game not set or player number not allowed");
+            return;
+        }
+
         if(data.type === 'down'){
             robot.press(game.keyBindings[playerId][data.key]).go();
         }

@@ -22,7 +22,7 @@ app.get('/api/games/:gameId', function(req, res) {
    }
 
    for (var idx in games) {
-       console.log(games);
+       //console.log(games);
        var game = games[idx];
        if (game.id.toString() == gameId.toString()) {
            return res.send(game);
