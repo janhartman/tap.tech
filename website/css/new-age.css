@@ -160,6 +160,9 @@ header {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
   background-color: #1B7B34;
+  
+  /* HIGH FIX FOR GAME */
+  height: 900px;
 }
 header .header-content {
   text-align: center;
