@@ -29,14 +29,12 @@ var ids = {};
 // the keymaps for the current game
 var game = {};
 
-var app2 = express();
-
 
 /**
  * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
  */
-app2.get('/game/:name', function(req, res) {
+app.get('/game/:name', function(req, res) {
     var gameName = req.params.name;
     request.get(config.webURL + '/api/games/' + gameName, function(err, response, body) {
         if (err) {
@@ -72,7 +70,7 @@ app2.get('/game/:name', function(req, res) {
 /**
  * Shut the server down.
  */
-app2.get('/shutdown', function(req, res) {
+app.get('/shutdown', function(req, res) {
    process.exit(0);
 });
 
@@ -82,7 +80,7 @@ app2.get('/shutdown', function(req, res) {
  * Serve the HTML with client-side socket JS code based on the current game.
  */
 
-app2.get('/', function (req, res) {
+app.get('/', function (req, res) {
     if (Object.keys(game).length == 0) {
         console.log("Game not started yet");
         return res.sendFile(path.join(__dirname, '..', 'client', 'gameNotStarted.html'));
@@ -112,6 +110,8 @@ app2.get('/', function (req, res) {
                 return res.sendFile(path.join(__dirname, '..', 'client', 'index3.html'));
             case 4:
                 return res.sendFile(path.join(__dirname, '..', 'client', 'index4.html'));
+            case 5:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index5.html'));
         }
 
     }
