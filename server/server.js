@@ -9,6 +9,7 @@ var app = express();
 app.use(cors());
 
 var games = require('./game.json');
+var ips = require('./ip.json');
 
 app.use(express.static(path.join(__dirname, '..', 'website')));
 
@@ -57,6 +58,32 @@ app.post('/api/games/', function(req, res) {
     fs.writeFileSync('game.json', JSON.stringify(games));
 
     res.sendStatus(200);
+});
+
+/**
+ * Add a new client socket server.
+ */
+app.post('/api/ip', function(req, res) {
+   var socketServer = req.body;
+   ips.push(socketServer);
+   fs.writeFileSync('ip.json', JSON.stringify(ips));
+
+   res.sendStatus(200);
+});
+
+/**
+ * Redirect to client socket server.
+ */
+app.get('/play/:code', function(req, res) {
+   var code = req.params.code;
+
+   ips.forEach(function (record) {
+       if (record.code == code) {
+           return res.redirect(record.ip);
+       }
+   });
+
+    res.sendStatus(404);
 });
 
 app.listen(80, function() {
