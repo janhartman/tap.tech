@@ -48,10 +48,12 @@
         socket.emit('ukaz', ms);
     })
 
-
-
-
   });
+  window.oncontextmenu = function(event) {
+     event.preventDefault();
+     event.stopPropagation();
+     return false;
+  };
 </script>
     <style>
     html{
