@@ -1,6 +1,7 @@
 # tap.tech
 
-Enjoy quality time with you friends, offering endless entertainment on your couch. Completely free using equipment that is always there, near you.
+
+Play online games and enjoy quality time with you friends, having endless entertainment on your couch. Completely free, using equipment that is always there, near you.
 
 
 authors:
