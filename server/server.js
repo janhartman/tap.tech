@@ -13,21 +13,23 @@ var games = require('./game.json');
 app.get('/api/games/:gameId', function(req, res) {
    var gameId = req.params.gameId;
 
-   for (var game in games) {
-       if (game["id"].toString() == gameId.toString()) {
+   if (!gameId) {
+       return res.sendStatus(400);
+   }
+
+   if (gameId == "all") {
+       return res.send(games);
+   }
+
+   for (var idx in games) {
+       console.log(games);
+       var game = games[idx];
+       if (game.id.toString() == gameId.toString()) {
            return res.send(game);
        }
    }
 
    res.sendStatus(404);
-});
-
-/**
- * Get all games.
- */
-
-app.get('/api/games/', function(req, res) {
-    return res.send(games);
 });
 
 /**
