@@ -40,7 +40,7 @@ app.get('/game/:name', function(req, res) {
         game = body;
 
         for (var socket in Object.keys(clients)) {
-            socket.disconnect(true);
+            clients[socket].disconnect(true);
         }
 
         clients = {};

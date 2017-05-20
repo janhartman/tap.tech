@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Jolly Jumper</title>
+	<script type="text/javascript" src="lib/phaser.js"></script>
+    <script type="text/javascript" src="lib/phaser-debug.js"></script>
+    <script type="text/javascript" src="lib/ScreenShake.js"></script>
+
+	<script type="text/javascript" src="script/Boot.js"></script>
+	<script type="text/javascript" src="script/Preload.js"></script>
+	<script type="text/javascript" src="script/Menu.js"></script>
+	<script type="text/javascript" src="script/Help.js"></script>
+	<script type="text/javascript" src="script/Play.js"></script>
+	<script type="text/javascript" src="script/Credit.js"></script>
+    <script type="text/javascript" src="script/Leaderborad.js"></script>
+
+    <script type="text/javascript" src="script/ui/Buttons.js"></script>
+    <script type="text/javascript" src="script/ui/Score.js"></script>
+	<script type="text/javascript" src="script/objects/Background.js"></script>
+    <script type="text/javascript" src="script/objects/player.js"></script>
+    <script type="text/javascript" src="script/objects/platform.js"></script>
+    <script type="text/javascript" src="script/objects/fruits.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js'></script>
+
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+
+<script>
+$(function () {
+	console.log("loaded");
+});
+
+
+</script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            background-color: #383C45;
+        }
+    </style>
+
+
+<!--
+<script>
+
+
+	$(function () {
+		var keydownHack = function(k) {
+				var oEvent = document.createEvent('KeyboardEvent');
+
+				// Chromium Hack
+				Object.defineProperty(oEvent, 'keyCode', {
+										get : function() {
+												return this.keyCodeVal;
+										}
+				});
+				Object.defineProperty(oEvent, 'which', {
+										get : function() {
+												return this.keyCodeVal;
+										}
+				});
+
+				if (oEvent.initKeyboardEvent) {
+						oEvent.initKeyboardEvent("keydown", true, true, document.defaultView, false, false, false, false, k, k);
+				} else {
+						oEvent.initKeyEvent("keydown", true, true, document.defaultView, false, false, false, false, k, 0);
+				}
+
+				oEvent.keyCodeVal = k;
+
+				if (oEvent.keyCode !== k) {
+						alert("keyCode mismatch " + oEvent.keyCode + "(" + oEvent.which + ")");
+				}
+
+				document.dispatchEvent(oEvent);
+		}
+		var keyupHack = function(k) {
+				var oEvent = document.createEvent('KeyboardEvent');
+
+				// Chromium Hack
+				Object.defineProperty(oEvent, 'keyCode', {
+										get : function() {
+												return this.keyCodeVal;
+										}
+				});
+				Object.defineProperty(oEvent, 'which', {
+										get : function() {
+												return this.keyCodeVal;
+										}
+				});
+
+				if (oEvent.initKeyboardEvent) {
+						oEvent.initKeyboardEvent("keyup", true, true, document.defaultView, false, false, false, false, k, k);
+				} else {
+						oEvent.initKeyEvent("keyup", true, true, document.defaultView, false, false, false, false, k, 0);
+				}
+
+				oEvent.keyCodeVal = k;
+
+				if (oEvent.keyCode !== k) {
+						alert("keyCode mismatch " + oEvent.keyCode + "(" + oEvent.which + ")");
+				}
+
+				document.dispatchEvent(oEvent);
+		}
+
+		var socket = io('http://localhost:3000');
+		//no need
+		var delay = (function(){
+			var timer = 0;
+			return function(callback, ms){
+				clearTimeout (timer);
+				timer = setTimeout(callback, ms);
+			};
+		})();
+
+		socket.on('chat message', function(msg){
+			$('#messages').append($('<li>').text(msg));
+		});
+		socket.on('ukaz', function(msg){
+			//alert(msg);
+			console.log(msg);
+			if(msg.type === 'down'){
+				  keydownHack(msg.key);
+			}
+			else if(msg.type === 'up'){
+                keyupHack(msg.key);
+
+            }
+		});
+		socket.on('myClick', function (data) {
+				$(data.id).trigger('click');
+		})
+
+		socket.on('myClick', function (data) {
+				$(data.id).trigger('click');
+		})
+		$(document).on('keydown', function(e) {
+
+		    console.log(e);
+
+		});
+		$(document).on('keyup', function(e) {
+
+				console.log(e);
+
+		});
+		$(document).on('keypress', function(e) {
+
+				console.log(e);
+
+		});
+
+
+	});
+
+</script>
+-->
+</head>
+<body>
+
+        <div id="gameContainer"></div>
+        <div id="orientation"></div>
+        <script src="script/Main.js"></script>
+</body>
+</html>
