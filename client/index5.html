@@ -92,34 +92,69 @@
         }
       @media all and (orientation:portrait) {
         div.up{
-          float:top;width:100%;height:25%;background-color:green;
+          float:top;width:100%;height:20%;background-color:green;
         }
         div.left{
-          float:left;width:50%;height:50%;font-size:40px;background-color:blue;padding-top:5%;
+          float:left;width:25%;height:60%;font-size:20px;background-color:blue;padding-top:5%;
         }
         div.right{
-          float:right;width:50%;height:50%;font-size:40px;background-color:red;padding-top:5%;
+          float:right;width:25%;height:60%;font-size:20px;background-color:red;padding-top:5%;
         }
         div.down{
-          float:bottom;width:100%;height:25%;font-size:40px;background-color:red;
+         float:right;width:100%;height:20%;font-size:20px;background-color:orange;padding-top:5%;
+        }
+        div.shoot{
+          position:absolute;left:25%;top:20%;width:50%;height:60%;font-size:20px;background-color:yellow;
+        }
+        button.left{
+          margin-top:15%;
+          font-size:75px;
+        }
+         button.up{
+          margin-top:3%;
+          font-size:75px;
+        }
+          button.down{
+          margin-top:1%;
+          font-size:75px;
+        }
+         button.shoot{
+          margin-top:15%;
+          font-size:60px;
         }
       }
       @media all and (orientation:landscape) {
         /* Styles for Landscape screen */
         div.up{
-          position:absolute;left:25%;top:0%;width:50%;height:50%;background-color:green;
+          position:absolute;left:20%;top:0%;width:60%;height:30%;background-color:green;
         }
         div.left{
-          position:absolute;left:0%;width:25%;height:100%;background-color:red;
+          position:absolute;left:0%;width:20%;height:100%;background-color:red;
         }
         div.right{
-          position:absolute;left:75%;width:25%;height:100%;background-color:blue;
+          position:absolute;left:80%;width:20%;height:100%;background-color:blue;
         }
         div.down{
-          position:absolute;left:25%;top:50%;width:50%;height:50%;background-color:orange;
+          position:absolute;left:20%;top:70%;width:60%;height:30%;background-color:orange;
+        }
+        div.shoot{
+          position:absolute;left:20%;top:30%;width:60%;height:40%;background-color:yellow;
         }
         button.left{
-          margin-top:20%;
+          margin-top:25%;
+          font-size:75px;
+        }
+        button.up{
+          margin-top:3%;
+          font-size:75px;
+        }
+        button.down{
+          margin-top:3%;
+          font-size:75px;
+        }
+        button.shoot{
+          margin-top:4%;
+          font-size:60px;
         }
       }
     </style>
@@ -138,7 +173,10 @@
 <button id="right1" class="left noselect">&#8680;</button>
      </div>
 <div id="down" class="down">
-<button id="down1" class="down noselectč">&#8681;</button>
+<button id="down1" class="down noselect">&#8681;</button>
+     </div>
+     <div id="shoot" class="shoot">
+<button id="shoot1" class="shoot noselect"> &#9889;</button>
      </div>
   </body>
 </html>
