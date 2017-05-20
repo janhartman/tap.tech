@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Achtung, die Kurve!",
+    "url": "http://www.kongregate.com/games/gburg/achtung-die-kurve-flash-remake",
+    "numOfPlayers": 4,
+    "keyBindings": {
+      "player1": {
+        "key1": 37,
+        "key2": 65
+      },
+      "player2": {
+        "key1": 37,
+        "key2": 65
+      },
+      "player3": {
+        "key1": 37,
+        "key2": 65
+      },
+      "player4": {
+        "key1": 37,
+        "key2": 65
+      }
+    }
+
+  }
+]
