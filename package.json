@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/janhartman/tap.tech/issues"
   },
-  "homepage": "https://github.com/janhartman/tap.tech#readme"
+  "homepage": "https://github.com/janhartman/tap.tech#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "node-key-sender": "^1.0.9",
+    "socket.io": "^2.0.1"
+  }
 }
