@@ -42,10 +42,13 @@
         socket.emit('command', ms);
     })
 
-
-
-
   });
+  
+  window.oncontextmenu = function(event) {
+     event.preventDefault();
+     event.stopPropagation();
+     return false;
+  };
 </script>
     <style>
     html{
