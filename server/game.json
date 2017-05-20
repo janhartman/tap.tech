@@ -4,22 +4,23 @@
     "name": "Achtung, die Kurve!",
     "url": "http://stravid.com/projects/achtung-die-kurve/",
     "numOfPlayers": 4,
+    "keys": 2,
     "keyBindings": {
       "player1": {
-        "key1": "left",
-        "key2": "right"
+        "key1": "LEFT",
+        "key2": "RIGHT"
       },
       "player2": {
-        "key1": "a",
-        "key2": "s"
+        "key1": "A",
+        "key2": "S"
       },
       "player3": {
-        "key1": "g",
-        "key2": "h"
+        "key1": "G",
+        "key2": "H"
       },
       "player4": {
-        "key1": "k",
-        "key2": "l"
+        "key1": "K",
+        "key2": "L"
       }
     }
 
@@ -29,18 +30,52 @@
     "name": "Bubble Trouble",
     "url": "https://www.miniclip.com/games/bubble-trouble/en/",
     "numOfPlayers": 2,
+    "keys": 3,
     "keyBindings": {
       "player1": {
-        "key1": "left",
-        "key2": "right",
-        "key3": "space"
+        "key1": "LEFT",
+        "key2": "RIGHT",
+        "key3": "SPACE"
       },
       "player2": {
-        "key1": "a",
-        "key2": "d",
-        "key3": "w"
+        "key1": "A",
+        "key2": "D",
+        "key3": "W"
       }
     }
-
+  },
+  {
+    "id": 3,
+    "name": "Drill Bunny",
+    "url": "http://dreamshowadventures.github.io/LudumDare29/",
+    "numOfPlayers": 1,
+    "keys": 3,
+    "keyBindings": {
+      "player1": {
+        "key1": "LEFT",
+        "key2": "RIGHT",
+        "key3": "SPACE"
+      }
+    }
+  },{
+    "id": 4,
+    "name": "Stick Figure Badminton",
+    "url": "http://www.kongregate.com/games/effinggames/stick-figure-badminton-2",
+    "numOfPlayers": 2,
+    "keys": 4,
+    "keyBindings": {
+      "player1": {
+        "key1": "LEFT",
+        "key2": "RIGHT",
+        "key3": "UP",
+        "key4": "DOWN"
+      },
+      "player2": {
+        "key1": "A",
+        "key2": "D",
+        "key3": "W",
+        "key4": "S"
+      }
+    }
   }
 ]

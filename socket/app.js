@@ -13,6 +13,7 @@ var ip = require('ip');
 var app = express();
 var server = http.Server(app);
 var io = socketio(server);
+var ipAddress = ip.address();
 
 robot.startJar();
 
@@ -26,7 +27,6 @@ var ids = {};
 // the keymaps for the current game
 var game = {};
 
-
 /**
  * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
@@ -39,18 +39,13 @@ app.get('/game/:name', function(req, res) {
             return res.sendStatus(500);
         }
 
-        game = body;
-
-        io.sockets.sockets.forEach(function(s) {
-            s.disconnect(true);
-        });
-
+        game = JSON.parse(body);
 
         clients = {};
         ids = {};
 
         // load the template and inject ip, then save and display
-        var ipAddress = ip.address();
+
         var template = fs.readFileSync('game.html', {encoding: 'utf8'});
         var toDisplay = template.replace('{ip}', ipAddress + ':3000');
 
@@ -97,10 +92,19 @@ app.get('/', function (req, res) {
     // potentially request UIs from main web server
     else {
         console.log("Sending HTML to client");
-        res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+        switch (game.keys) {
+            case 2:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+            case 3:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index3.html'));
+            case 4:
+                return res.sendFile(path.join(__dirname, '..', 'client', 'index4.html'));
+        }
+
     }
 
 });
+
 
 /**
  * Sockets: clients connecting and disconnecting
@@ -135,18 +139,23 @@ io.on('connection', function (socket) {
 
 /**
  * Sockets: clients sending commands
- * TODO: use keysender to simulate keypresses
  */
 
 io.sockets.on('connection', function (socket) {
     socket.on('command', function (data) {
-        console.log(data);
+        //console.log(data);
+
         var playerId = ids[socket.id];
+        if (!game.keyBindings || !game.keyBindings[playerId]) {
+            console.log("Game not set or player number not allowed");
+            return;
+        }
+
         if(data.type === 'down'){
-            robot.press(game.keyBindings[playerId][data.key]);
+            robot.press(game.keyBindings[playerId][data.key]).go();
         }
         else if(data.type === 'up'){
-            robot.release(game.keyBindings[playerId][data.key]);
+            robot.release(game.keyBindings[playerId][data.key]).go();
         }
 
         //socket.broadcast.emit('command', data);
