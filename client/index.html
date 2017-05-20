@@ -43,7 +43,7 @@
     })
 
   });
-  
+
   window.oncontextmenu = function(event) {
      event.preventDefault();
      event.stopPropagation();
@@ -63,12 +63,21 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      button.noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+        }
     </style>
   </head>
   <body>
     <div id="left" style="float:left;width:50%;height:100%;font-size:40px;background-color:#EEF0F3">
 
-   <button id="left1" style="
+   <button id="left1" class="noselect" style="
   width:80%;height:80%;margin:10%;background-color:#2e466e;border-radius:22px;
   border:2px solid #1f2f47;color:#ffffff;
   font-family:Arial;
@@ -77,7 +86,7 @@
     </div>
     <div id="right" style="float:right;width:50%;height:100%;font-size:40px;background-color:#2e466e">
 
-      <button id="right1" style="
+      <button class="noselect" id="right1" style="
   width:80%;height:80%;margin:10%;background-color:#EEF0F3;border-radius:22px;
   border:2px solid #1f2f47;color:#2e466e;
   font-family:Arial;
