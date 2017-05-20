@@ -25,7 +25,6 @@ var ids = {};
 var game = {};
 
 
-
 /**
  * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
@@ -39,12 +38,6 @@ app.get('/game/:name', function(req, res) {
         }
 
         game = body;
-
-
-        for (var socket in Object.values(clients)) {
-            clients[socket].disconnect(true);
-        }
-
 
         clients = {};
         ids = {};
@@ -61,6 +54,9 @@ app.get('/game/:name', function(req, res) {
     res.sendStatus(200);
 });
 
+/**
+ * Shut the server down.
+ */
 app.get('/shutdown', function(req, res) {
    process.exit(0);
 });

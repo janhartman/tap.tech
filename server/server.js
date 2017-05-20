@@ -1,12 +1,46 @@
 'use strict';
-var express = require('express');
 
+var express = require('express');
+var fs = require('fs');
 var app = express();
 
-app.get('/api/games/:gameName', function(req, res) {
-   var gameName = req.params.gameName;
+var games = require('./game.json');
 
-   res.send({name: "test-game", numOfPlayers: 4});
+
+/**
+ * Get the specified game details.
+ */
+app.get('/api/games/:gameId', function(req, res) {
+   var gameId = req.params.gameId;
+
+   for (var game in games) {
+       if (game["id"].toString() == gameId.toString()) {
+           return res.send(game);
+       }
+   }
+
+   res.sendStatus(404);
+});
+
+/**
+ * Get all games.
+ */
+
+app.get('/api/games/', function(req, res) {
+    return res.send(games);
+});
+
+/**
+ * Add a new game to the database.
+ */
+app.post('/api/games/', function(req, res) {
+    var game = req.body;
+    var newId = games[games.length - 1] + 1;
+    game['id'] = newId;
+    games.push(game);
+    fs.writeFileSync('game.json', JSON.stringify(games));
+
+    res.sendStatus(200);
 });
 
 app.listen(8080, function() {
