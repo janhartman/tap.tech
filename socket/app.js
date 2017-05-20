@@ -19,10 +19,10 @@ var config = require('./config.json');
 
 // the connected clients (phones)
 var clients = {};
+var ids = {};
 
 // the keymaps for the current game
 var game = {};
-
 
 
 /**
@@ -39,11 +39,8 @@ app.get('/game/:name', function(req, res) {
 
         game = body;
 
-        for (var socket in Object.keys(clients)) {
-            socket.disconnect(true);
-        }
-
         clients = {};
+        ids = {};
 
         // load the template and inject ip, then save and display
         var ipAddress = ip.address();
@@ -57,6 +54,9 @@ app.get('/game/:name', function(req, res) {
     res.sendStatus(200);
 });
 
+/**
+ * Shut the server down.
+ */
 app.get('/shutdown', function(req, res) {
    process.exit(0);
 });
@@ -116,6 +116,7 @@ io.on('connection', function (socket) {
 
     console.log("Adding socket " + socket.id);
     clients[socket.id] = socket;
+    ids[socket.id] = "player" + Object.keys(clients).length;
 
     socket.on('disconnect', function () {
         if (clients[socket.id]) {
@@ -131,18 +132,10 @@ io.on('connection', function (socket) {
  */
 
 io.sockets.on('connection', function (socket) {
-    socket.on('button1', function (data) {
+    socket.on('key', function (data) {
         console.log(data);
     });
-    socket.on('button2', function (data) {
-        console.log(data);
-    });
-    socket.on('button3', function (data) {
-        console.log(data);
-    });
-    socket.on('button4', function (data) {
-        console.log(data);
-    });
+
 
 });
 

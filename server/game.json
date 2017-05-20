@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Achtung, die Kurve!",
+    "url": "http://stravid.com/projects/achtung-die-kurve/",
+    "numOfPlayers": 4,
+    "keyBindings": {
+      "player1": {
+        "key1": "left",
+        "key2": "right"
+      },
+      "player2": {
+        "key1": "a",
+        "key2": "s"
+      },
+      "player3": {
+        "key1": "g",
+        "key2": "h"
+      },
+      "player4": {
+        "key1": "k",
+        "key2": "l"
+      }
+    }
+
+  },
+  {
+    "id": 2,
+    "name": "Bubble Trouble",
+    "url": "https://www.miniclip.com/games/bubble-trouble/en/",
+    "numOfPlayers": 2,
+    "keyBindings": {
+      "player1": {
+        "key1": "left",
+        "key2": "right",
+        "key3": "space"
+      },
+      "player2": {
+        "key1": "a",
+        "key2": "d",
+        "key3": "w"
+      }
+    }
+
+  }
+]
