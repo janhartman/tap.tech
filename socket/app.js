@@ -5,7 +5,7 @@ var fs = require('fs');
 var express = require('express');
 var http = require('http');
 var socketio = require('socket.io');
-var ks = require('node-key-sender');
+var robot = require("kbm-robot");
 var request = require('request');
 var opn = require('opn');
 var ip = require('ip');
@@ -13,6 +13,8 @@ var ip = require('ip');
 var app = express();
 var server = http.Server(app);
 var io = socketio(server);
+
+robot.startJar();
 
 // the config (URL to webserver...)
 var config = require('./config.json');
@@ -38,6 +40,12 @@ app.get('/game/:name', function(req, res) {
         }
 
         game = body;
+
+/*
+        for (var socket in Object.keys(clients)) {
+            clients[socket].disconnect(true);
+        }
+*/
 
         clients = {};
         ids = {};
@@ -132,8 +140,18 @@ io.on('connection', function (socket) {
  */
 
 io.sockets.on('connection', function (socket) {
-    socket.on('key', function (data) {
+    socket.on('command', function (data) {
         console.log(data);
+        var playerId = ids[socket.id];
+        if(data.type === 'down'){
+            robot.press(game.keyBindings[playerId][data.key]);
+        }
+        else if(data.type === 'up'){
+            robot.release(game.keyBindings[playerId][data.key]);
+        }
+
+        //socket.broadcast.emit('command', data);
+
     });
 
 

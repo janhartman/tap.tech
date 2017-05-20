@@ -13,33 +13,33 @@
     var right = 39;
     $("#left").on('touchstart', function(event){
         var ms = {
-          key: left,
+          key: "key1",
           type: "down"
         };
 
-        socket.emit('ukaz', ms);
+        socket.emit('command', ms);
     })
     $("#left").on('touchend', function(event){
       var ms = {
-        key: left,
+        key: "key1",
         type: "up"
       };
-        socket.emit('ukaz', ms);
+        socket.emit('command', ms);
     })
 
     $("#right").on('touchstart', function(event){
       var ms = {
-        key: right,
+        key: "key2",
         type: "down"
       };
-      socket.emit('ukaz', ms);
+      socket.emit('command', ms);
     })
     $("#right").on('touchend', function(event){
       var ms = {
-        key: right,
+        key: "key2",
         type: "up"
       };
-        socket.emit('ukaz', ms);
+        socket.emit('command', ms);
     })
 
 
@@ -64,6 +64,7 @@
   </head>
   <body>
     <div id="left" style="float:left;width:50%;height:100%;font-size:40px;background-color:#EEF0F3">
+
    <button id="left1" style="
   width:80%;height:80%;margin:10%;background-color:#2e466e;border-radius:22px;
   border:2px solid #1f2f47;color:#ffffff;
@@ -72,6 +73,7 @@
     <!--<button id="levo1" style="width:80%;height:80%;font-size:20px;color:blue;margin:10%">levo </button>-->
     </div>
     <div id="right" style="float:right;width:50%;height:100%;font-size:40px;background-color:#2e466e">
+
       <button id="right1" style="
   width:80%;height:80%;margin:10%;background-color:#EEF0F3;border-radius:22px;
   border:2px solid #1f2f47;color:#2e466e;
