@@ -28,17 +28,17 @@ a {
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
-  color: #fdcc52;
+  color: white;
 }
 a:hover,
 a:focus {
-  color: #fcbd20;
+  color: white;
 }
 hr {
-  max-width: 100px;
+  max-width: 150px;
   margin: 25px auto 0;
   border-width: 1px;
-  border-color: rgba(34, 34, 34, 0.1);
+  border-color: white;
 }
 hr.light {
   border-color: white;
@@ -52,6 +52,7 @@ h6 {
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
+  color: white;
 }
 p {
   font-size: 18px;
@@ -59,7 +60,7 @@ p {
   margin-bottom: 20px;
 }
 .navbar-default {
-  background-color: white;
+  background-color: black;
   border-color: rgba(34, 34, 34, 0.05);
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
@@ -72,15 +73,15 @@ p {
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
-  color: #fdcc52;
+  color: white;
 }
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
-  color: #fcbd20;
+  color: white;
 }
 .navbar-default .navbar-header .navbar-toggle {
   font-size: 12px;
-  color: #222222;
+  color: white;
   padding: 8px 10px;
 }
 .navbar-default .nav > li > a {
@@ -95,11 +96,11 @@ p {
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
-  color: #fdcc52;
+  color: white;
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
-  color: #fdcc52 !important;
+  color: white !important;
   background-color: transparent;
 }
 .navbar-default .nav > li.active > a:hover,
@@ -127,23 +128,23 @@ p {
     color: white;
   }
   .navbar-default.affix {
-    background-color: white;
+    background-color: black;
     border-color: rgba(34, 34, 34, 0.1);
   }
   .navbar-default.affix .navbar-header .navbar-brand {
-    color: #222222;
+    color: white;
   }
   .navbar-default.affix .navbar-header .navbar-brand:hover,
   .navbar-default.affix .navbar-header .navbar-brand:focus {
-    color: #fdcc52;
+    color: white;
   }
   .navbar-default.affix .nav > li > a,
   .navbar-default.affix .nav > li > a:focus {
-    color: #222222;
+    color: #222233;
   }
   .navbar-default.affix .nav > li > a:hover,
   .navbar-default.affix .nav > li > a:focus:hover {
-    color: #fdcc52;
+    color: white;
   }
 }
 header {
@@ -151,13 +152,14 @@ header {
   width: 100%;
   min-height: auto;
   overflow-y: hidden;
-  background: url("../img/bg-pattern.png"), #7b4397;
+  /*background: url("../img/bg-pattern.png"), #7b4397;*/
   /* fallback for old browsers */
-  background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
+  /*background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);*/
   /* Chrome 10-25, Safari 5.1-6 */
-  background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
+  /*background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);*/
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
+  background-color: #cc3333;
 }
 header .header-content {
   text-align: center;
@@ -220,9 +222,14 @@ header .device-container .screen img {
 }
 section {
   padding: 100px 0;
+  background-color: #33cccc;
+}
+section p.text-muted {
+	color: white;
 }
 section h2 {
   font-size: 50px;
+  color: white;
 }
 section.download {
   padding: 150px 0;
@@ -312,7 +319,7 @@ section.cta .cta-content {
 section.cta .cta-content h2 {
   margin-top: 0;
   margin-bottom: 25px;
-  color: white;
+  color: red;
   max-width: 450px;
   font-size: 50px;
 }
@@ -393,9 +400,10 @@ footer ul li a.active {
   text-decoration: none;
 }
 .bg-primary {
-  background: #fdcc52;
+  /*background: #fdcc52;
   background: -webkit-linear-gradient(#fdcc52, #fdc539);
-  background: linear-gradient(#fdcc52, #fdc539);
+  background: linear-gradient(#fdcc52, #fdc539);*/
+  background: #cc3333;
 }
 .text-primary {
   color: #fdcc52;
