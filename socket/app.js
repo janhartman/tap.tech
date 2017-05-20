@@ -20,6 +20,7 @@ robot.startJar();
 
 // the config (URL to webserver...)
 var config = require('./config.json');
+//var game = require('./../server/game.json');
 
 // the connected clients (phones)
 var clients = {};
@@ -28,11 +29,14 @@ var ids = {};
 // the keymaps for the current game
 var game = {};
 
+var app2 = express();
+
+
 /**
  * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
  */
-app.get('/game/:name', function(req, res) {
+app2.get('/game/:name', function(req, res) {
     var gameName = req.params.name;
     request.get(config.webURL + '/api/games/' + gameName, function(err, response, body) {
         if (err) {
@@ -41,6 +45,12 @@ app.get('/game/:name', function(req, res) {
         }
 
         game = JSON.parse(body);
+        /*
+        io.sockets.forEach(function(s) {
+            s.disconnect(true);
+        });
+*/
+
 
         clients = {};
         ids = {};
@@ -62,7 +72,7 @@ app.get('/game/:name', function(req, res) {
 /**
  * Shut the server down.
  */
-app.get('/shutdown', function(req, res) {
+app2.get('/shutdown', function(req, res) {
    process.exit(0);
 });
 
@@ -72,7 +82,7 @@ app.get('/shutdown', function(req, res) {
  * Serve the HTML with client-side socket JS code based on the current game.
  */
 
-app.get('/', function (req, res) {
+app2.get('/', function (req, res) {
     if (Object.keys(game).length == 0) {
         console.log("Game not started yet");
         return res.sendFile(path.join(__dirname, '..', 'client', 'gameNotStarted.html'));
@@ -107,6 +117,7 @@ app.get('/', function (req, res) {
     }
 
 });
+
 
 
 /**
@@ -149,6 +160,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('command', function (data) {
         //console.log(data);
 
+
         var playerId = ids[socket.id];
         if (!game.keyBindings || !game.keyBindings[playerId]) {
             console.log("Game not set or player number not allowed");
@@ -156,13 +168,14 @@ io.sockets.on('connection', function (socket) {
         }
 
         if(data.type === 'down'){
+
             robot.press(game.keyBindings[playerId][data.key]).go();
         }
         else if(data.type === 'up'){
             robot.release(game.keyBindings[playerId][data.key]).go();
         }
 
-        //socket.broadcast.emit('command', data);
+        socket.broadcast.emit('command', data);
 
     });
 
@@ -173,3 +186,7 @@ io.sockets.on('connection', function (socket) {
 server.listen(3000, function () {
     console.log('Socket server listening on port 3000');
 });
+
+var ngrok = require('ngrok');
+
+ngrok.connect(3000, function (err, url) {}); // https://757c1652.ngrok.io -> http://localhost:9090
