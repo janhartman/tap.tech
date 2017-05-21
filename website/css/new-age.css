@@ -407,6 +407,10 @@ section.contact ul.list-social li.social-google-plus a:hover {
 	max-height: 700px;
 }
 
+#gameList {
+	max-height: 700px;
+}
+
 footer {
   background-color: #222222;
   padding: 25px 0;
