@@ -404,6 +404,7 @@ section.contact ul.list-social li.social-google-plus a:hover {
 
 #list {
 	background-color: #4885ed;
+	max-height: 700px;
 }
 
 footer {
