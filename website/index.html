@@ -242,7 +242,9 @@
 							$("#gameList").append("<li style='font-size:1.4em;'><a href='" + data[i].url + "'onclick=playGameById('" + data[i].id + "')>" + data[i].name + "</a> - max number of players: " + data[i].numOfPlayers + "</li>");
 						}
 						
-						$("#gameList").append("</ul>");
+						$("#gameList").append("</ul><br>");
+						
+						$("#gameList").append("<h4>Is your favourite game missing from our list? Don't worry - you can add your own games and let us fully support them using this form.</h4>");
 					})
 				});
 				
@@ -255,7 +257,7 @@
 				}
 				
 				
-				$("#gameList").append("<h3>Is your favourite game missing from our list? Don't worry - you can add your own games and let us fully support them using this form.</h3>");
+				
 				
 			</script>
 				
