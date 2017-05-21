@@ -142,6 +142,10 @@ app.get('/', function (req, res) {
 io.on('connection', function (socket) {
     console.info('New client connected (id=' + socket.id + ').');
 
+    if (!game.keyBindings) {
+        console.log('Game not set or player number not allowed');
+        return;
+    }
     var numOfClients = Object.keys(clients).length;
 
     if (numOfClients == game.numOfPlayers) {
@@ -151,7 +155,6 @@ io.on('connection', function (socket) {
     else if (numOfClients > game.numOfPlayers) {
         console.log('Error: there are more clients than allowed players');
         return socket.disconnect(true);
-
     }
 
     clients[socket.id] = socket;
