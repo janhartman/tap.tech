@@ -11,10 +11,10 @@ var app = express();
 var games = require('./game.json');
 var ips = [];
 
+app.use(express.static(path.join(__dirname, '..', 'website')));
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '..', 'website')));
-app.use(favicon(path.join(__dirname, '..', 'website', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, '..', 'website', 'favicon.ico')));
 
 
 /**
@@ -56,13 +56,15 @@ app.get('/api/games/:gameId', function (req, res) {
  */
 app.post('/api/games/', function (req, res) {
     var game = req.body;
+    console.log("adding game");
+    console.log(game);
 
     for (var i in games) {
         if (games[i].name == game.name || games[i].url == game.name) {
             return res.sendStatus(409);
         }
     }
-    var newId = games[games.length - 1] + 1;
+    var newId = games[games.length - 1].id + 1;
     game['id'] = newId;
     games.push(game);
     fs.writeFileSync('game.json', JSON.stringify(games));
@@ -76,7 +78,7 @@ app.post('/api/games/', function (req, res) {
 app.post('/api/ip', function (req, res) {
     var socketServer = req.body;
     ips.push(socketServer);
-    console.log("client " + socketServer);
+    console.log("client " + JSON.stringify(socketServer) );
     res.sendStatus(200);
 });
 

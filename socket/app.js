@@ -18,7 +18,6 @@ var ipAddress = ip.address();
 
 // the config (URL to webserver...)
 var config = require('./config.json');
-//var game = require('./../server/game.json');
 
 // the connected clients (phones)
 var clients = {};
@@ -38,7 +37,6 @@ app.get('/game/:name', function (req, res) {
     request.get(config.webURL + '/api/games/' + gameName, function (err, response, body) {
         if (err) {
             console.log(err);
-            console.log("aaaa");
             return res.sendStatus(500);
         }
 
@@ -54,10 +52,10 @@ app.get('/game/:name', function (req, res) {
                 code: code,
                 ip: ipAddress
             })
-        }, function (err, response, body2) {
-            if (err) {
-                console.log("Error posting ip to server");
-                return res.sendStatus(500);
+            }, function (err, response, body2) {
+                if (err) {
+                    console.log("Error posting ip to server");
+                    return res.sendStatus(500);
             }
 
             game = JSON.parse(body);
