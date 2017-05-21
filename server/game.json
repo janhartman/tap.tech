@@ -148,5 +148,20 @@
         "key4": "down"
       }
     }
+  },
+  {
+    "id": 10,
+    "name": "Mario",
+    "url": "http://tapfreak.tech/game/10",
+    "numOfPlayers": 1,
+    "keys": 4,
+    "keyBindings": {
+      "player1": {
+        "key1": "left",
+        "key2": "right",
+        "key3": "up",
+        "key4": "down"
+      }
+    }
   }
 ]

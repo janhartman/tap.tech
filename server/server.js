@@ -16,6 +16,8 @@ var games = require('./game.json');
 var ips = [];
 
 app.use(express.static(path.join(__dirname, '..', 'website')));
+app.use(express.static(path.join(__dirname, '..', 'games/10')));
+
 
 /**
  * Load the website.
@@ -70,7 +72,7 @@ app.post('/api/games/', function (req, res) {
 app.post('/api/ip', function (req, res) {
     var socketServer = req.body;
     ips.push(socketServer);
-    console.log("client " + ip);
+    console.log("client " + socketServer);
     res.sendStatus(200);
 });
 
@@ -103,6 +105,14 @@ app.delete('/api/ip/:code', function (req, res) {
         }
     }
     return res.sendStatus(404);
+});
+
+/**
+ * Start a game.
+ */
+app.get('/game/:id', function(req, res) {
+    var id = req.params.id;
+    return res.sendFile(path.join(__dirname, '..', 'games', id, 'main.html'));
 });
 
 app.listen(80, function () {
