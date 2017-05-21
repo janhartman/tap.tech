@@ -5,18 +5,16 @@ var fs = require('fs');
 var express = require('express');
 var http = require('http');
 var socketio = require('socket.io');
-var robot = require("kbm-robot");
+var robot = require('robotjs');
 var request = require('request');
 var opn = require('opn');
 var ip = require('ip');
-var randomstring = require("randomstring");
+var randomstring = require('randomstring');
 
 var app = express();
 var server = http.Server(app);
 var io = socketio(server);
 var ipAddress = ip.address();
-
-robot.startJar();
 
 // the config (URL to webserver...)
 var config = require('./config.json');
@@ -43,11 +41,6 @@ app.get('/game/:name', function(req, res) {
         }
 
         game = JSON.parse(body);
-        /*
-        io.sockets.forEach(function(s) {
-            s.disconnect(true);
-        });
-*/
 
 
         clients = {};
@@ -82,7 +75,7 @@ app.get('/shutdown', function(req, res) {
 
 app.get('/', function (req, res) {
     if (Object.keys(game).length == 0) {
-        console.log("Game not started yet");
+        console.log('Game not started yet');
         return res.sendFile(path.join(__dirname, '..', 'client', 'gameNotStarted.html'));
     }
 
@@ -102,7 +95,7 @@ app.get('/', function (req, res) {
     // TODO UI picking logic based on keymapping
     // potentially request UIs from main web server
     else {
-        console.log("Sending HTML to client");
+        console.log('Sending HTML to client');
         switch (game.keys) {
             case 2:
                 return res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
@@ -140,9 +133,9 @@ io.on('connection', function (socket) {
     }
 
     clients[socket.id] = socket;
-    var playerId = "player" + Object.keys(clients).length;
+    var playerId = 'player' + Object.keys(clients).length;
     ids[socket.id] = playerId;
-    console.log("Binding socket " + socket.id + " to player id " + playerId);
+    console.log('Binding socket ' + socket.id + ' to player id ' + playerId);
 
     socket.on('disconnect', function () {
         if (clients[socket.id]) {
@@ -163,16 +156,16 @@ io.sockets.on('connection', function (socket) {
 
         var playerId = ids[socket.id];
         if (!game.keyBindings || !game.keyBindings[playerId]) {
-            console.log("Game not set or player number not allowed");
+            console.log('Game not set or player number not allowed');
             return;
         }
 
         if(data.type === 'down'){
 
-            robot.press(game.keyBindings[playerId][data.key]).go();
+            robot.keyToggle(game.keyBindings[playerId][data.key], 'down');
         }
         else if(data.type === 'up'){
-            robot.release(game.keyBindings[playerId][data.key]).go();
+            robot.keyToggle(game.keyBindings[playerId][data.key], 'up');
         }
 
         socket.broadcast.emit('command', data);

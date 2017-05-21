@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>tap.tech</title>
+    <title>tapfreak.tech</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">tap.tech</a>
+                <a class="navbar-brand page-scroll" href="#page-top">tapfreak.tech</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -78,7 +78,7 @@
 							<h1>Tap. Play. Enjoy.</h1>
 							<h2>Play online games and enjoy quality time with your friends, having endless entertainment on your couch. Completely free, using equipment that is always there, near you.</h2>
 							<br>
-                            <a href="#download" class="btn btn-outline btn-xl page-scroll">Play now!</a>
+                            <a href="#download" class="btn btn-outline btn-xl page-scroll" id="moveToDownload">Play now!</a>
                         </div>
                     </div>
                 </div>
@@ -111,12 +111,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Discover the fun!</h2>
-                    <p>Our app is available on any mobile device, tablet or desktop! Download now to start playing!</p>
-                    <div class="badges">
+                    <h2 class="section-heading">Easy setup with one click.</h2>
+                    <p>Our app is available to run on Windows by running pinned setup.exe below. Now all you need is only smartphone or tablet and you are ready to rock!</p>
+						
+					<a href="#download" class="btn btn-outline btn-xl page-scroll">Download now</a>
+						
+					<!--on any mobile device, tablet or desktop! Download now to start playing!</p>-->
+                    <!--<div class="badges">
                         <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
                         <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -157,7 +161,7 @@
                                 <div class="feature-item">
                                     <i class="icon-screen-smartphone text-primary"></i>
                                     <h3>Everything supported</h3>
-                                    <p class="text-muted">Do you own a device with internet browser? Then you are good to go! tap.tech can work with or without our application.</p>
+                                    <p class="text-muted">Do you own a device with internet browser? Then you are good to go! tapfreak.tech can work with or without our application.</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -220,13 +224,11 @@
 		
 	<section class="bg-primary text-center">
 		<div class="container" id="gameList">
-			<h2>A list of currently tested games:</h2>
-			
-		    <!-- jQuery -->
+			<h2>The list of games that we currently fully support:</h2>
+
+		    <!-- jQuery loading here because of get call -->
 		    <script src="lib/jquery/jquery.min.js"></script>
-			
-			
-			
+
 			<script type="text/javascript">
 
 				$(document).ready(function() {
@@ -237,14 +239,29 @@
 						$("#gameList").append("<ul>");
 						for (var i in data) {
 							//console.log(results[i][0]);
-							$("#gameList").append("<li style='font-size:1.4em;'><a href='" + data[i].url + "'>" + data[i].name + "</a> - max number of players: " + data[i].numOfPlayers + "</li>");
+							$("#gameList").append("<li style='font-size:1.4em;'><a href='" + data[i].url + "'onclick=playGameById('" + data[i].id + "')>" + data[i].name + "</a> - max number of players: " + data[i].numOfPlayers + "</li>");
 						}
 						
-						$("#gameList").append("</ul>");
+						$("#gameList").append("</ul><br>");
+						
+						$("#gameList").append("<h4>Is your favourite game missing from our list? Don't worry - you can add your own games and let us fully support them using this form.</h4>");
 					})
 				});
 				
+				function playGameById(gameId){
+					
+					$.get("http://localhost:3000/game/" + gameId,function(data2){
+						console.log("ID: " + gameId);
+						console.log(data2);
+					});
+				}
+				
+				
+				
+				
 			</script>
+				
+			
 
 			
 		</div>
