@@ -274,11 +274,10 @@
 						
 
 						//FORM
-						$("#gameList").append('<form id="gameForm" hidden><br>Game name:<br><input type="text" name="gameName" placeholder="Enter game name." style="min-width: 300px; color: #41464E;"><br><br>Game URL:<br><input type="text" name="gameUrl" placeholder="Enter game url." style="min-width: 300px; color: #41464E;"><br><br>Max players:<br><input type="number" name="gameNumberOfPlayers" placeholder="Enter max number of players." style="min-width: 300px; color: #41464E; text-align:center;"><br>');
-						$("#gameList").append('<br>Max controls:<br><input type="number" name="gameNumberOfKeys" placeholder="Enter required number of keys." style="min-width: 300px; color: #41464E; text-align:center;"><br>')
-						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl page-scroll">Generate key input fields</a></form>')
+						$("#gameList").append('<form id="gameForm" hidden><br>Game name:<br><input type="text" name="gameName" placeholder="Enter game name." style="min-width: 300px; color: #41464E;"><br><br>Game URL:<br><input type="text" name="gameUrl" placeholder="Enter game url." style="min-width: 300px; color: #41464E;"><br><br>Max players:<br><input type="number" name="gameNumberOfPlayers" placeholder="Enter max number of players." style="min-width: 300px; color: #41464E; text-align:center;"><br><br>Max number of control keys:<br><input type="number" name="gameNumberOfKeys" id="numberOfKeys" placeholder="Enter required number of keys." style="min-width: 300px; color: #41464E; text-align:center;"><br>')
+						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl" onclick="return getDataFromInput();">Generate key input fields</a></form>')
 						
-						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl page-scroll">Submit</a></form>')
+						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl">Submit</a></form>')
 						
 					})
 					
@@ -301,6 +300,12 @@
 				
 				function showForm() {
 					$("#gameForm").show();
+					return false;
+				}
+				
+				function getDataFromInput() {
+					var number = $('#numberOfKeys').val();
+					console.log("Keys: " + number);
 					return false;
 				}
 				
