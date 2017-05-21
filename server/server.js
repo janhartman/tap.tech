@@ -4,7 +4,8 @@ var express = require('express');
 var fs = require('fs');
 var path = require('path');
 var cors = require('cors');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 
 var app = express();
 var games = require('./game.json');
@@ -13,6 +14,7 @@ var ips = [];
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '..', 'website')));
+app.use(favicon(path.join(__dirname, '..', 'website', 'favicon.ico')));
 
 
 /**
