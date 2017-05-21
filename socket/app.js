@@ -27,44 +27,66 @@ var ids = {};
 // the keymaps for the current game
 var game = {};
 
+var code = "";
 
 /**
  * Getting game info / loading a new game
  * Wait for the request with the name of the game and request the keymappings from the web server.
  */
-app.get('/game/:name', function(req, res) {
+app.get('/game/:name', function (req, res) {
     var gameName = req.params.name;
-    request.get(config.webURL + '/api/games/' + gameName, function(err, response, body) {
+    request.get(config.webURL + '/api/games/' + gameName, function (err, response, body) {
         if (err) {
             console.log(err);
+            console.log("aaaa");
             return res.sendStatus(500);
         }
 
-        game = JSON.parse(body);
+        code = randomstring.generate({length: 5, charset: 'alphabetic', capitalization: 'lowercase'});
 
+        request({
+            method: 'POST',
+            url: config.webURL + '/api/ip',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                code: code,
+                ip: ipAddress
+            })
+        }, function (err, response, body2) {
+            if (err) {
+                console.log("Error posting ip to server");
+                return res.sendStatus(500);
+            }
 
-        clients = {};
-        ids = {};
+            game = JSON.parse(body);
 
-        // load the template and inject ip, then save and display
-        var code = randomstring.generate({length: 5, charset: 'alphabetic', capitalization: 'lowercase'});
+            clients = {};
+            ids = {};
 
-        var template = fs.readFileSync('game.html', {encoding: 'utf8'});
-        var toDisplay = template.replace('{ip}', ipAddress + ':3000');
-        toDisplay = toDisplay.replace('{code}', code);
+            // load the template and inject ip, then save and display
 
-        fs.writeFileSync('newgame.html', toDisplay);
-        opn(path.join(__dirname, 'newgame.html'));
+            var template = fs.readFileSync('game.html', {encoding: 'utf8'});
+            var toDisplay = template.replace('{ip}', ipAddress + ':3000');
+            toDisplay = toDisplay.replace('{code}', code);
+
+            fs.writeFileSync('newgame.html', toDisplay);
+            opn(path.join(__dirname, 'newgame.html'));
+            res.sendStatus(200);
+        });
 
     });
-    res.sendStatus(200);
+
 });
 
 /**
  * Shut the server down.
  */
-app.get('/shutdown', function(req, res) {
-   process.exit(0);
+app.get('/shutdown', function (req, res) {
+    request.delete(config.webURL + '/api/ip/' + code, function (err, res, body) {
+    });
+    process.exit(0);
 });
 
 
@@ -92,7 +114,6 @@ app.get('/', function (req, res) {
 
     }
 
-    // TODO UI picking logic based on keymapping
     // potentially request UIs from main web server
     else {
         console.log('Sending HTML to client');
@@ -110,7 +131,6 @@ app.get('/', function (req, res) {
     }
 
 });
-
 
 
 /**
@@ -160,11 +180,11 @@ io.sockets.on('connection', function (socket) {
             return;
         }
 
-        if(data.type === 'down'){
+        if (data.type === 'down') {
 
             robot.keyToggle(game.keyBindings[playerId][data.key], 'down');
         }
-        else if(data.type === 'up'){
+        else if (data.type === 'up') {
             robot.keyToggle(game.keyBindings[playerId][data.key], 'up');
         }
 
@@ -179,7 +199,3 @@ io.sockets.on('connection', function (socket) {
 server.listen(3000, function () {
     console.log('Socket server listening on port 3000');
 });
-
-var ngrok = require('ngrok');
-
-ngrok.connect(3000, function (err, url) {}); // https://757c1652.ngrok.io -> http://localhost:9090
