@@ -7,23 +7,22 @@
     "keys": 2,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT"
+        "key1": "left",
+        "key2": "right"
       },
       "player2": {
-        "key1": "A",
-        "key2": "S"
+        "key1": "a",
+        "key2": "s"
       },
       "player3": {
-        "key1": "G",
-        "key2": "H"
+        "key1": "g",
+        "key2": "h"
       },
       "player4": {
-        "key1": "K",
-        "key2": "L"
+        "key1": "k",
+        "key2": "l"
       }
     }
-
   },
   {
     "id": 2,
@@ -33,14 +32,14 @@
     "keys": 3,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT",
-        "key3": "SPACE"
+        "key1": "left",
+        "key2": "right",
+        "key3": "space"
       },
       "player2": {
-        "key1": "A",
-        "key2": "D",
-        "key3": "W"
+        "key1": "a",
+        "key2": "d",
+        "key3": "w"
       }
     }
   },
@@ -52,12 +51,13 @@
     "keys": 3,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT",
-        "key3": "SPACE"
+        "key1": "left",
+        "key2": "right",
+        "key3": "space"
       }
     }
-  },{
+  },
+  {
     "id": 4,
     "name": "Stick Figure Badminton",
     "url": "http://www.kongregate.com/games/effinggames/stick-figure-badminton-2",
@@ -65,16 +65,16 @@
     "keys": 4,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT",
-        "key3": "UP",
-        "key4": "DOWN"
+        "key1": "left",
+        "key2": "right",
+        "key3": "up",
+        "key4": "down"
       },
       "player2": {
-        "key1": "A",
-        "key2": "D",
-        "key3": "W",
-        "key4": "S"
+        "key1": "a",
+        "key2": "d",
+        "key3": "w",
+        "key4": "s"
       }
     }
   },
@@ -86,8 +86,8 @@
     "keys": 2,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT"
+        "key1": "left",
+        "key2": "right"
       }
     }
   },
@@ -99,23 +99,23 @@
     "keys": 4,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT",
-        "key3": "UP",
-        "key4": "DOWN"
+        "key1": "left",
+        "key2": "right",
+        "key3": "up",
+        "key4": "down"
       }
     }
   },
   {
     "id": 7,
-    "name": "Space Invaders",
-    "url": "http://strykerkkd.github.io/SpaceInvaders/",
+    "name": "space Invaders",
+    "url": "http://strykerkkd.github.io/spaceInvaders/",
     "numOfPlayers": 1,
     "keys": 2,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT"
+        "key1": "left",
+        "key2": "right"
       }
     }
   },
@@ -127,10 +127,10 @@
     "keys": 4,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT",
-        "key3": "UP",
-        "key4": "DOWN"
+        "key1": "left",
+        "key2": "right",
+        "key3": "up",
+        "key4": "down"
       }
     }
   },
@@ -142,10 +142,10 @@
     "keys": 4,
     "keyBindings": {
       "player1": {
-        "key1": "LEFT",
-        "key2": "RIGHT",
-        "key3": "UP",
-        "key4": "DOWN"
+        "key1": "left",
+        "key2": "right",
+        "key3": "up",
+        "key4": "down"
       }
     }
   }
