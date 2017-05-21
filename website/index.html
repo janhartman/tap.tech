@@ -119,14 +119,24 @@
         </div>
     </header>
 
-    <section id="download" class="download bg-primary text-center">
+    <section id="download" class="download bg-primary">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Easy setup with one click.</h2>
-                    <p>Our app is available to run on Windows by running the pinned setup.exe below. Now all you need is a mobile device and you are ready to rock!</p>
-						
-					<a href="#easySetup" class="btn btn-outline btn-xl page-scroll">Download now</a>
+                    <h2 class="section-heading text-center">Easy setup using websocket server.</h2>
+                    <!--<p>Our app is available to run on Windows by running the pinned setup.exe below. Now all you need is a mobile device and you are ready to rock!</p>-->
+					<br>
+					<ul style='font-size:1.4em;'>
+						<li>Clone project from our github.</li>
+						<li><code>cd socket</code></li>
+						<li><code>npm install</code></li>
+						<li><code>node app.js</code></li>
+						<li>Check some of the games from the <a href="#list" class="page-scroll whiteHref">list below</a>!</li>
+						<li>Start playing!</li>
+					</ul>	
+					<br>
+					<a href="https://github.com/janhartman/tapfreak" class="btn btn-outline btn-xl page-scroll">Download now from github</a>
+					<!--<a href="" class="btn btn-outline btn-xl page-scroll">Download setup.exe for Windows</a>-->
 						
 					<!--on any mobile device, tablet or desktop! Download now to start playing!</p>-->
                     <!--<div class="badges">
@@ -218,7 +228,7 @@
         <div class="overlay"></div>
     </section>-->
 		
-	<section class="bg-primary" id="easySetup">
+	<!--<section class="bg-primary" id="easySetup">
 		<div class="container">
 			<h2>Are you downloading the Windows installer right now and thinking of what to do in the meantime?</h2>
 			<ul style='font-size:1.4em;'>
@@ -229,7 +239,7 @@
 			<br>
 			<p>Missed the download link for the Windows installer above? Get it <a href="#download" class="page-scroll whiteHref">here</a>!</p>
 		</div>
-	</section>	
+	</section>-->	
 
 	<!-- SOCIAL LINKS -->
     <!--<section id="contact" class="contact bg-primary">
@@ -270,7 +280,7 @@
 					
 					
 						//GAME LIST
-						$("#gameList").append("<ul>");
+						$("#gameList").append("<ul style='text-align:center;'>");
 						for (var i in data) {
 							//console.log(results[i][0]);
 							$("#gameList").append("<li style='font-size:1.4em;'><a href='" + data[i].url + "'onclick=playGameById('" + data[i].id + "')>" + data[i].name + "</a> - max number of players: " + data[i].numOfPlayers + "</li>");
