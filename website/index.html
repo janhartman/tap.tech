@@ -67,7 +67,7 @@
                         <a class="page-scroll" href="#list">Games</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="contact">Contact</a>
+                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -288,6 +288,14 @@
 						$("#gameList").append('<div id="player11id" hidden>Player 1 key 1:</div><br><input hidden type="text" name="player11" id="player11" placeholder="Player 1 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player12id" hidden>Player 1 key 2:</div><br><input hidden type="text" name="player12" id="player12" placeholder="Player 1 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player13id" hidden>Player 1 key 3:</div><br><input hidden type="text" name="player13" id="player13" placeholder="Player 1 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player14id" hidden>Player 1 key 4:</div><br><input hidden type="text" name="player14" id="player14" placeholder="Player 1 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player21id" hidden>Player 2 key 1:</div><br><input hidden type="text" name="player21" id="player21" placeholder="Player 2 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player22id" hidden>Player 2 key 2:</div><br><input hidden type="text" name="player22" id="player22" placeholder="Player 2 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player23id" hidden>Player 2 key 3:</div><br><input hidden type="text" name="player23" id="player23" placeholder="Player 2 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player24id" hidden>Player 2 key 4:</div><br><input hidden type="text" name="player24" id="player24" placeholder="Player 2 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player31id" hidden>Player 3 key 1:</div><br><input hidden type="text" name="player31" id="player31" placeholder="Player 3 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player32id" hidden>Player 3 key 2:</div><br><input hidden type="text" name="player32" id="player32" placeholder="Player 3 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player33id" hidden>Player 3 key 3:</div><br><input hidden type="text" name="player33" id="player33" placeholder="Player 3 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player34id" hidden>Player 3 key 4:</div><br><input hidden type="text" name="player34" id="player34" placeholder="Player 3 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player41id" hidden>Player 4 key 1:</div><br><input hidden type="text" name="player41" id="player41" placeholder="Player 4 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player42id" hidden>Player 4 key 2:</div><br><input hidden type="text" name="player42" id="player42" placeholder="Player 4 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player43id" hidden>Player 4 key 3:</div><br><input hidden type="text" name="player43" id="player43" placeholder="Player 4 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player44id" hidden>Player 4 key 4:</div><br><input hidden type="text" name="player44" id="player44" placeholder="Player 4 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><br><br><a href="" onclick="addGame()" class="btn btn-outline btn-xl">Submit</a></form>');
 
 						console.log("adding listener");
+						
+	                    for (var i = 0; i < 4; i++) {
+	                        for (var j = 0; j < 4; j++) {
+	                            $("#id"+ ij).css("display", "none");
+								$("#id"+ ij + "id").css("display", "none");
+	                        }
+	                    }
+						
 
 					})
 					
