@@ -54,6 +54,12 @@ app.get('/api/games/:gameId', function (req, res) {
  */
 app.post('/api/games/', function (req, res) {
     var game = req.body;
+
+    for (var i in games) {
+        if (games[i].name == game.name || games[i].url == game.name) {
+            return res.sendStatus(409);
+        }
+    }
     var newId = games[games.length - 1] + 1;
     game['id'] = newId;
     games.push(game);
