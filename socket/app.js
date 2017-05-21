@@ -158,9 +158,16 @@ io.on('connection', function (socket) {
     }
 
     clients[socket.id] = socket;
-    var playerId = 'player' + Object.keys(clients).length;
-    ids[socket.id] = playerId;
-    console.log('Binding socket ' + socket.id + ' to player id ' + playerId);
+
+    for (var i = 1; i <= game.numOfPlayers; i++) {
+        var playerId = 'player' + i.toString();
+        if (! ids[socket.id]) {
+            ids[socket.id] = playerId;
+            console.log('Binding socket ' + socket.id + ' to player id ' + playerId);
+        }
+
+    }
+
 
     socket.on('disconnect', function () {
         if (clients[socket.id]) {
