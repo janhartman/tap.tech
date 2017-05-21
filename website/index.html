@@ -266,7 +266,7 @@
 						$("#gameList").append("</ul><br>");
 						
 						//MISSING GAME?
-						$("#gameList").append("<h4>Is your favourite game missing from our list? Don't worry - you can add your own games and let us fully support them using this <a href='' id='showForm' class='page-scroll whiteHref'>form</a> !</h4>");
+						$("#gameList").append("<h4>Is your favourite game missing from our list? Don't worry - you can add your own games and let us fully support them using this <a href='' id='showForm' type='button' class='page-scroll onclick='showForm()' whiteHref'>form</a> !</h4>");
 						
 
 						//FORM
@@ -275,10 +275,10 @@
 						
 					})
 					
-					$("#showForm").on("click", function(e) {
+					/*$("#showForm").on("click", function(e) {
 					  e.preventDefault();
 					  $("#gameForm").show();
-					});
+					});*/
 					
 					
 				});
@@ -290,6 +290,10 @@
 						console.log("ID: " + gameId);
 						console.log(data2);
 					});
+				}
+				
+				function showForm() {
+					$("#gameForm").show();
 				}
 				
 				
