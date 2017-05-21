@@ -60,9 +60,9 @@
                     <li>
                         <a class="page-scroll" href="#features">Features</a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a class="page-scroll" href="#easySetup">Setup</a>
-                    </li>
+                    </li>-->
                     <li>
                         <a class="page-scroll" href="#list">Games</a>
                     </li>
@@ -283,7 +283,7 @@
 						$("#gameList").append("<ul style='text-align:center;'>");
 						for (var i in data) {
 							//console.log(results[i][0]);
-							$("#gameList").append("<li style='font-size:1.4em;'><a href='" + data[i].url + "'onclick=playGameById('" + data[i].id + "')>" + data[i].name + "</a> - max number of players: " + data[i].numOfPlayers + "</li>");
+							$("#gameList").append("<li style='font-size:1.4em; text-align: left; margin-left: 10em;'><a href='" + data[i].url + "'onclick=playGameById('" + data[i].id + "')>" + data[i].name + "</a> - max players: " + data[i].numOfPlayers + "</li>");
 						}
 						
 						$("#gameList").append("</ul><br>");
