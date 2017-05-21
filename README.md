@@ -1,4 +1,4 @@
-# tap.tech
+# tapfreak
 
 
 Play online games and enjoy quality time with you friends, having endless entertainment on your couch. Completely free, using equipment that is always there, near you.
