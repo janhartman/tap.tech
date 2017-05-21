@@ -260,6 +260,10 @@
 			<script type="text/javascript">
 
 				$(document).ready(function() {
+					
+					
+					$('#list').css("min-height", '500px')
+					
 					var results = "";
 						$.get("/api/games/all",function(data){
 				  		//results = JSON.parse(data);
