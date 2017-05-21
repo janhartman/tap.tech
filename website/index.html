@@ -243,6 +243,8 @@
 		
 	<section class="bg-primary text-center" id="list">
 		<div class="container" id="gameList">
+	
+			
 			<h2>The list of games that we currently fully support:</h2>
 
 		    <!-- jQuery loading here because of get call -->
@@ -255,6 +257,8 @@
 						$.get("/api/games/all",function(data){
 				  		//results = JSON.parse(data);
 					
+					
+						//GAME LIST
 						$("#gameList").append("<ul>");
 						for (var i in data) {
 							//console.log(results[i][0]);
@@ -263,9 +267,27 @@
 						
 						$("#gameList").append("</ul><br>");
 						
-						$("#gameList").append("<h4>Is your favourite game missing from our list? Don't worry - you can add your own games and let us fully support them using this form.</h4>");
+						//MISSING GAME?
+						$("#gameList").append("<h4>Is your favourite game missing from our list? Don't worry - you can add your own games and let us fully support them using this <a href='' id='showForm' class='whiteHref' onclick='return showForm();'>form</a>!</h4>");
+						
+
+						//FORM
+						$("#gameList").append('<form id="gameForm" hidden><br>Game name:<br><input type="text" name="gameName" placeholder="Enter game name." style="min-width: 300px; color: #41464E;"><br><br>Game URL:<br><input type="text" name="gameUrl" placeholder="Enter game url." style="min-width: 300px; color: #41464E;"><br><br>Max players:<br><input type="number" name="gameNumberOfPlayers" placeholder="Enter max number of players." style="min-width: 300px; color: #41464E; text-align:center;"><br>');
+						$("#gameList").append('<br>Max controls:<br><input type="number" name="gameNumberOfKeys" placeholder="Enter required number of keys." style="min-width: 300px; color: #41464E; text-align:center;"><br>')
+						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl page-scroll">Generate key input fields</a></form>')
+						
+						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl page-scroll">Submit</a></form>')
+						
 					})
+					
+					/*$("#showForm").on("click", function(e) {
+					  e.preventDefault();
+					  $("#gameForm").show();
+					});*/
+					
+					
 				});
+
 				
 				function playGameById(gameId){
 					
@@ -275,12 +297,15 @@
 					});
 				}
 				
+				function showForm() {
+					$("#gameForm").show();
+					return false;
+				}
+				
 				
 				
 				
 			</script>
-				
-			
 
 			
 		</div>

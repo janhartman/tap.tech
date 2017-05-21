@@ -96,7 +96,7 @@
 
       }
       button {
-        width:80%;height:80%;margin:5% 10%;background-color:#2e466e;border-radius:22px;
+        width:80%;height:80%;margin:5% 10%;border-radius:22px;
         border:2px solid #1f2f47;color:#ffffff;
         font-family:Arial;
         font-size:120px;
@@ -112,34 +112,59 @@
         }
       @media all and (orientation:portrait) {
         div.up{
-          float:top;width:100%;height:25%;background-color:green;
+          float:top;width:100%;height:25%;background-color:#2e466e;
         }
         div.left{
-          float:left;width:50%;height:50%;font-size:40px;background-color:blue;padding-top:5%;
+          float:left;width:50%;height:50%;font-size:40px;background-color:#4885ed;padding-top:5%;
         }
         div.right{
-          float:right;width:50%;height:50%;font-size:40px;background-color:red;padding-top:5%;
+          float:right;width:50%;height:50%;font-size:40px;background-color:rgb(109, 158, 242);padding-top:5%;
         }
         div.down{
-          float:bottom;width:100%;height:25%;font-size:40px;background-color:red;
+          position:relative;top:50%;width:100%;height:25%;font-size:40px;background-color:#2e466e;
+        }
+        button.left{
+          background-color: rgb(109, 158, 242);
+        }
+        button.down{
+          background-color: #4885ed;
+          position:absolute;
+          top:0px;left:0px;
+        }
+        button.up{
+          background-color: rgb(109, 158, 242);
+        }
+        button.right{
+          background-color: #4885ed;
         }
       }
       @media all and (orientation:landscape) {
         /* Styles for Landscape screen */
         div.up{
-          position:absolute;left:25%;top:0%;width:50%;height:50%;background-color:green;
+          position:absolute;left:25%;top:0%;width:50%;height:50%;background-color:#4885ed;
         }
         div.left{
-          position:absolute;left:0%;width:25%;height:100%;background-color:red;
+          position:absolute;left:0%;width:25%;height:100%;background-color:#2e466e;
         }
         div.right{
-          position:absolute;left:75%;width:25%;height:100%;background-color:blue;
+          position:absolute;left:75%;width:25%;height:100%;background-color:#2e466e;
         }
         div.down{
-          position:absolute;left:25%;top:50%;width:50%;height:50%;background-color:orange;
+          position:absolute;left:25%;top:50%;width:50%;height:50%;background-color:rgb(109, 158, 242);
         }
         button.left{
           margin-top:20%;
+          background-color: rgb(109, 158, 242);
+        }
+        button.right{
+          margin-top:20%;
+          background-color: rgb(109, 158, 242);
+        }
+        button.down{
+          background-color: #4885ed;
+        }
+        button.up{
+          background-color: rgb(109, 158, 242);
         }
       }
     </style>
@@ -155,10 +180,10 @@
     <!--<button id="levo1" style="width:80%;height:80%;font-size:20px;color:blue;margin:10%">levo </button>-->
     </div>
     <div id="right" class="right">
-<button id="right1" class="left noselect">&#8680;</button>
+<button id="right1" class="right noselect">&#8680;</button>
      </div>
 <div id="down" class="down">
-<button id="down1" class="down noselectč">&#8681;</button>
+<button id="down1" class="down noselect">&#8681;</button>
      </div>
   </body>
 </html>

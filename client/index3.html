@@ -99,36 +99,43 @@
         }
       @media all and (orientation:portrait) {
         div.up{
-          position:absolute;left:0%;top:70%;width:100%;height:30%;background-color:green;
+          position:absolute;left:0%;top:70%;width:100%;height:30%;background-color:#2e466e;
         }
         div.left{
-          position:absolute;left:0%;width:50%;height:70%;background-color:red;
+          position:absolute;left:0%;width:50%;height:70%;background-color:rgb(109, 158, 242);
         }
         div.right{
-          position:absolute;left:50%;width:50%;height:70%;background-color:blue;
+          position:absolute;left:50%;width:50%;height:70%;background-color:#4885ed;
         }
         button.right{
           margin-top:25%;
+          background-color:#2e466e;
+        }
+        button.left{
+          margin-top:25%;
+          background-color:#2e466e;
         }
         button.shoot{
           margin:5% 10%;
           font-size: 70px;
+          background-color:rgb(109, 158, 242);
         }
       }
       @media all and (orientation:landscape) {
         /* Styles for Landscape screen */
         div.up{
-          position:absolute;left:0%;top:60%;width:100%;height:40%;background-color:green;
+          position:absolute;left:0%;top:60%;width:100%;height:40%;background-color:#2e466e;
         }
         div.left{
-          position:absolute;left:0%;width:50%;height:60%;background-color:red;
+          position:absolute;left:0%;width:50%;height:60%;background-color:rgb(109, 158, 242);
         }
         div.right{
-          position:absolute;left:50%;width:50%;height:60%;background-color:blue;
+          position:absolute;left:50%;width:50%;height:60%;background-color:#4885ed;
         }
         button.shoot{
           margin:2% 10%;
           font-size: 75px;
+          background-color:#4885ed
         }
       }
     </style>
@@ -140,7 +147,7 @@
     </div>
 
     <div id="left" class="left">
-    <button id="left1" class="right noselect" >&#8678;</button>
+    <button id="left1" class="left noselect" >&#8678;</button>
     <!--<button id="levo1" style="width:80%;height:80%;font-size:20px;color:blue;margin:10%">levo </button>-->
     </div>
     <div id="right" class="right">
