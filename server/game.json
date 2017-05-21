@@ -148,5 +148,18 @@
         "key4": "down"
       }
     }
+  },
+  {
+    "name": "Octocat Jump",
+    "url": "http://ogoshen.github.io/game-off-2012/",
+    "numOfPlayers": "1",
+    "keys": "2",
+    "keyBindings": {
+      "player1": {
+        "key1": "left",
+        "key2": "right"
+      }
+    },
+    "id": 10
   }
 ]
