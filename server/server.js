@@ -7,16 +7,12 @@ var cors = require('cors');
 var bodyParser = require('body-parser')
 
 var app = express();
-
-app.use(cors());
-app.use(bodyParser.json());
-
-
 var games = require('./game.json');
 var ips = [];
 
+app.use(cors());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '..', 'website')));
-app.use(express.static(path.join(__dirname, '..', 'games/10')));
 
 
 /**
@@ -112,7 +108,7 @@ app.delete('/api/ip/:code', function (req, res) {
  */
 app.get('/game/:id', function(req, res) {
     var id = req.params.id;
-    return res.sendFile(path.join(__dirname, '..', 'games', id, 'main.html'));
+    return res.sendStatus(200);
 });
 
 app.listen(80, function () {
