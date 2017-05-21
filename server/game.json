@@ -77,5 +77,76 @@
         "key4": "S"
       }
     }
+  },
+  {
+    "id": 5,
+    "name": "Jolly Jumper",
+    "url": "http://shohan4556.github.io/jolly-jumper",
+    "numOfPlayers": 1,
+    "keys": 2,
+    "keyBindings": {
+      "player1": {
+        "key1": "LEFT",
+        "key2": "RIGHT"
+      }
+    }
+  },
+  {
+    "id": 6,
+    "name": "Snake",
+    "url": "https://rabiroshan.github.io/snake_game/",
+    "numOfPlayers": 1,
+    "keys": 4,
+    "keyBindings": {
+      "player1": {
+        "key1": "LEFT",
+        "key2": "RIGHT",
+        "key3": "UP",
+        "key4": "DOWN"
+      }
+    }
+  },
+  {
+    "id": 7,
+    "name": "Space Invaders",
+    "url": "http://strykerkkd.github.io/SpaceInvaders/",
+    "numOfPlayers": 1,
+    "keys": 2,
+    "keyBindings": {
+      "player1": {
+        "key1": "LEFT",
+        "key2": "RIGHT"
+      }
+    }
+  },
+  {
+    "id": 8,
+    "name": "SkiFree",
+    "url": "http://basicallydan.github.io/skifree.js/",
+    "numOfPlayers": 1,
+    "keys": 4,
+    "keyBindings": {
+      "player1": {
+        "key1": "LEFT",
+        "key2": "RIGHT",
+        "key3": "UP",
+        "key4": "DOWN"
+      }
+    }
+  },
+  {
+    "id": 9,
+    "name": "BlicBlock",
+    "url": "http://blicblockjs.herokuapp.com",
+    "numOfPlayers": 1,
+    "keys": 4,
+    "keyBindings": {
+      "player1": {
+        "key1": "LEFT",
+        "key2": "RIGHT",
+        "key3": "UP",
+        "key4": "DOWN"
+      }
+    }
   }
 ]
