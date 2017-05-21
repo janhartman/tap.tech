@@ -162,7 +162,7 @@ header {
   background-color: #4885ed;
   
   /* HIGH FIX FOR GAME */
-  height: 1450px;
+  max-height: 1200px;
 }
 header .header-content {
   text-align: center;
@@ -195,7 +195,8 @@ header .device-container .screen img {
 }
 @media (min-width: 768px) {
   header {
-    min-height: 450px;
+	/* HIGH FIX FOR GAME */
+    max-height: 550px;
   }
   header .header-content {
     text-align: left;
@@ -221,7 +222,7 @@ header .device-container .screen img {
 @media (min-width: 992px) {
 header {
     /* HIGH FIX FOR GAME */
-    min-height: 1050px;
+    max-height: 625px;
 }
   header .header-content .header-content-inner h1 {
     font-size: 50px;
@@ -258,6 +259,10 @@ section.download .badges .badge-link img {
   height: 60px;
 }
 @media (min-width: 768px) {
+	header {
+	    /* HIGH FIX FOR GAME */
+	    min-height: 700px;
+	}
   section.download .badges .badge-link {
     display: inline-block;
     margin-bottom: 0;
@@ -266,7 +271,7 @@ section.download .badges .badge-link img {
 @media (min-width: 768px) {
 	header {
 	    /* HIGH FIX FOR GAME */
-	    height: 900px;
+	    min-height: 450px;
 	}
   section.download h2 {
     font-size: 70px;
@@ -290,6 +295,10 @@ section.features .device-container {
   margin-bottom: 100px;
 }
 @media (min-width: 992px) {
+	header {
+	    /* HIGH FIX FOR GAME */
+	    min-height: 750px;
+	}
   section.features .device-container {
     margin-bottom: 0;
   }
