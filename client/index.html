@@ -69,24 +69,34 @@
               -ms-user-select: none; /* Internet Explorer/Edge */
                   user-select: none; /* Non-prefixed version, currently
                                         supported by Chrome and Opera */
+      }
+      @media all and (orientation:portrait) {
+        button.left{
+          margin:35% 10%;
         }
+      }
+      @media all and (orientation:landscape) {
+        button.left{
+          margin:10%;
+        }
+      }
     </style>
   </head>
   <body>
-    <div id="left" style="float:left;width:50%;height:100%;font-size:40px;background-color:#EEF0F3">
+    <div id="left" style="float:left;width:50%;height:100%;font-size:40px;background-color:rgb(109, 158, 242)">
 
-   <button id="left1" class="noselect" style="
-  width:80%;height:80%;margin:10%;background-color:#2e466e;border-radius:22px;
+   <button id="left1" class="left noselect" style="
+  width:80%;height:80%;background-color:#4885ed;border-radius:22px;
   border:2px solid #1f2f47;color:#ffffff;
   font-family:Arial;
   font-size:120px;">&#8678</button>
     <!--<button id="levo1" style="width:80%;height:80%;font-size:20px;color:blue;margin:10%">levo </button>-->
     </div>
-    <div id="right" style="float:right;width:50%;height:100%;font-size:40px;background-color:#2e466e">
+    <div id="right" style="float:right;width:50%;height:100%;font-size:40px;background-color:#4885ed">
 
-      <button class="noselect" id="right1" style="
-  width:80%;height:80%;margin:10%;background-color:#EEF0F3;border-radius:22px;
-  border:2px solid #1f2f47;color:#2e466e;
+      <button class="left noselect" id="right1" style="
+  width:80%;height:80%;background-color:rgb(109, 158, 242);border-radius:22px;
+  border:2px solid #1f2f47;color:#ffffff;
   font-family:Arial;
   font-size:120px;">&#8680</button>
      </div>

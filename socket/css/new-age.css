@@ -159,7 +159,7 @@ header {
   /*background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);*/
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
-  background-color: #1B7B34;
+  background-color: #4885ed;
   
   /* HIGH FIX FOR GAME */
   height: 1450px;
@@ -230,7 +230,7 @@ header {
 }
 section {
   padding: 100px 0;
-  background-color: #1B7B34;
+  background-color: #4885ed;
 }
 section p.text-muted {
 	color: white;
@@ -416,7 +416,7 @@ footer ul li a.active {
   /*background: #fdcc52;
   background: -webkit-linear-gradient(#fdcc52, #fdc539);
   background: linear-gradient(#fdcc52, #fdc539);*/
-  background: #cc0000;
+  background: #6D9EF2;
 }
 .text-primary {
   color: #fdcc52;
@@ -435,8 +435,16 @@ footer ul li a.active {
 .btn-outline:active,
 .btn-outline.active {
   color: white;
-  background-color: #fdcc52;
-  border-color: #fdcc52;
+  background-color: #41464E;
+  border-color: white;
+}
+#moveToDownload:hover,
+#moveToDownload:focus,
+#moveToDownload:active,
+#moveToDownload.active {
+    color: white;
+    background-color: #41464E;
+    border-color: white;
 }
 .btn {
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
