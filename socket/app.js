@@ -179,7 +179,3 @@ io.sockets.on('connection', function (socket) {
 server.listen(3000, function () {
     console.log('Socket server listening on port 3000');
 });
-
-var ngrok = require('ngrok');
-
-ngrok.connect(3000, function (err, url) {}); // https://757c1652.ngrok.io -> http://localhost:9090
