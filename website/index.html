@@ -243,13 +243,12 @@
 		
 	<section class="bg-primary text-center" id="list">
 		<div class="container" id="gameList">
-	
-			
+
 			<h2>The list of games that we currently fully support:</h2>
 
 		    <!-- jQuery loading here because of get call -->
 		    <script src="lib/jquery/jquery.min.js"></script>
-
+			
 			<script type="text/javascript">
 
 				$(document).ready(function() {
@@ -272,10 +271,11 @@
 						
 
 						//FORM
-						$("#gameList").append('<form id="gameForm" hidden><br>Game name:<br><input type="text" name="gameName" placeholder="Enter game name." style="min-width: 300px; color: #41464E;"><br><br>Game URL:<br><input type="text" name="gameUrl" placeholder="Enter game url." style="min-width: 300px; color: #41464E;"><br><br>Max players:<br><input type="number" name="gameNumberOfPlayers" placeholder="Enter max number of players." style="min-width: 300px; color: #41464E; text-align:center;"><br><br>Max number of control keys:<br><input type="number" name="gameNumberOfKeys" id="numberOfKeys" placeholder="Enter required number of keys." style="min-width: 300px; color: #41464E; text-align:center;"><br>')
-						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl" onclick="return getDataFromInput();">Generate key input fields</a></form>')
+						$("#gameList").append('<form hidden id="gameForm"><br>Game name:<br><input type="text" name="gameName" placeholder="Enter game name." style="min-width: 300px; color: #41464E;"><br><br>Game URL:<br><input type="text" name="gameUrl" placeholder="Enter game url." style="min-width: 300px; color: #41464E;"><br><br>Max players:<br><input type="number" id="numberOfPlayers" name="gameNumberOfPlayers" placeholder="Enter max number of players." style="min-width: 300px; color: #41464E; text-align:center;"><br><br>Max number of control keys:<br><input type="number" name="gameNumberOfKeys" id="numberOfKeys" placeholder="Enter required number of keys." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><br><a href="" class="btn btn-outline btn-xl" onclick="return getDataFromInput();">Generate key input fields</a></form>');
 						
-						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl">Submit</a></form>')
+						$("#gameList").append('<div id="player11id" hidden>Player 1 key 1:</div><br><input hidden type="number" name="player11" id="player11" placeholder="Player 1 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player12id" hidden>Player 1 key 2:</div><br><input hidden type="number" name="player12" id="player12" placeholder="Player 1 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player13id" hidden>Player 1 key 3:</div><br><input hidden type="number" name="player13" id="player13" placeholder="Player 1 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player14id" hidden>Player 1 key 4:</div><br><input hidden type="number" name="player14" id="player14" placeholder="Player 1 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player21id" hidden>Player 2 key 1:</div><br><input hidden type="number" name="player21" id="player21" placeholder="Player 2 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player22id" hidden>Player 2 key 2:</div><br><input hidden type="number" name="player22" id="player22" placeholder="Player 2 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player23id" hidden>Player 2 key 3:</div><br><input hidden type="number" name="player23" id="player23" placeholder="Player 2 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player24id" hidden>Player 2 key 4:</div><br><input hidden type="number" name="player24" id="player24" placeholder="Player 2 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player31id" hidden>Player 3 key 1:</div><br><input hidden type="number" name="player31" id="player31" placeholder="Player 3 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player32id" hidden>Player 3 key 2:</div><br><input hidden type="number" name="player32" id="player32" placeholder="Player 3 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player33id" hidden>Player 3 key 3:</div><br><input hidden type="number" name="player33" id="player33" placeholder="Player 3 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player34id" hidden>Player 3 key 4:</div><br><input hidden type="number" name="player34" id="player34" placeholder="Player 3 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player41id" hidden>Player 4 key 1:</div><br><input hidden type="number" name="player41" id="player41" placeholder="Player 4 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player42id" hidden>Player 4 key 2:</div><br><input hidden type="number" name="player42" id="player42" placeholder="Player 4 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player43id" hidden>Player 4 key 3:</div><br><input hidden type="number" name="player43" id="player43" placeholder="Player 4 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player44id" hidden>Player 4 key 4:</div><br><input hidden type="number" name="player44" id="player44" placeholder="Player 4 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br>');
+						
+						$("#gameList").append('<br><br><a href="" class="btn btn-outline btn-xl">Submit</a></form>');
 						
 					})
 					
@@ -302,9 +302,261 @@
 				}
 				
 				function getDataFromInput() {
-					var number = $('#numberOfKeys').val();
-					console.log("Keys: " + number);
+					var numberOfPlayers = $('#numberOfPlayers').val();
+					console.log("Keys: " + numberOfPlayers);
+					
+					
+					var numberOfKeys = $('#numberOfKeys').val();
+					console.log("Keys: " + numberOfKeys);
+					
+					
+					if (numberOfPlayers == 1 && numberOfKeys == 1) {
+						$("#player11id").show();
+						$("#player11").show();
+					}
+					else if (numberOfPlayers == 1 && numberOfKeys == 2) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+					}
+					else if (numberOfPlayers == 1 && numberOfKeys == 3) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player13id").show();
+						$("#player13").show();
+					}
+					else if (numberOfPlayers == 1 && numberOfKeys == 4) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player13id").show();
+						$("#player13").show();
+						$("#player14id").show();
+						$("#player14").show();
+					}
+					else if (numberOfPlayers == 2 && numberOfKeys == 1) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player21id").show();
+						$("#player21").show();
+					}
+					else if (numberOfPlayers == 2 && numberOfKeys == 2) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+					}
+					else if (numberOfPlayers == 2 && numberOfKeys == 3) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player13id").show();
+						$("#player13").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+						$("#player23id").show();
+						$("#player23").show();
+					}
+					else if (numberOfPlayers == 2 && numberOfKeys == 4) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player13id").show();
+						$("#player13").show();
+						$("#player14id").show();
+						$("#player14").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+						$("#player23id").show();
+						$("#player23").show();
+						$("#player24id").show();
+						$("#player24").show();
+					}
+					else if (numberOfPlayers == 3 && numberOfKeys == 1) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player31id").show();
+						$("#player31").show();
+					}
+					else if (numberOfPlayers == 3 && numberOfKeys == 2) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+						$("#player31id").show();
+						$("#player31").show();
+						$("#player32id").show();
+						$("#player32").show();
+					}
+					else if (numberOfPlayers == 3 && numberOfKeys == 3) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player13id").show();
+						$("#player13").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+						$("#player23id").show();
+						$("#player23").show();
+						$("#player31id").show();
+						$("#player31").show();
+						$("#player32id").show();
+						$("#player32").show();
+						$("#player33id").show();
+						$("#player33").show();
+					}
+					else if (numberOfPlayers == 3 && numberOfKeys == 4) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player13id").show();
+						$("#player13").show();
+						$("#player14id").show();
+						$("#player14").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+						$("#player23id").show();
+						$("#player23").show();
+						$("#player24id").show();
+						$("#player24").show();
+						$("#player31id").show();
+						$("#player31").show();
+						$("#player32id").show();
+						$("#player32").show();
+						$("#player33id").show();
+						$("#player33").show();
+						$("#player34id").show();
+						$("#player34").show();
+					}
+					else if (numberOfPlayers == 4 && numberOfKeys == 1) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player31id").show();
+						$("#player31").show();
+						$("#player41id").show();
+						$("#player41").show();
+					}
+					else if (numberOfPlayers == 4 && numberOfKeys == 2) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+						$("#player31id").show();
+						$("#player31").show();
+						$("#player32id").show();
+						$("#player32").show();
+						$("#player41id").show();
+						$("#player41").show();
+						$("#player42id").show();
+						$("#player42").show();
+					}
+					else if (numberOfPlayers == 4 && numberOfKeys == 3) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player13id").show();
+						$("#player13").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+						$("#player23id").show();
+						$("#player23").show();
+						$("#player31id").show();
+						$("#player31").show();
+						$("#player32id").show();
+						$("#player32").show();
+						$("#player33id").show();
+						$("#player33").show();
+						$("#player41id").show();
+						$("#player41").show();
+						$("#player42id").show();
+						$("#player42").show();
+						$("#player43id").show();
+						$("#player43").show();
+					}
+					else if (numberOfPlayers == 4 && numberOfKeys == 4) {
+						$("#player11id").show();
+						$("#player11").show();
+						$("#player12id").show();
+						$("#player12").show();
+						$("#player13id").show();
+						$("#player13").show();
+						$("#player14id").show();
+						$("#player14").show();
+						$("#player21id").show();
+						$("#player21").show();
+						$("#player22id").show();
+						$("#player22").show();
+						$("#player23id").show();
+						$("#player23").show();
+						$("#player24id").show();
+						$("#player24").show();
+						$("#player31id").show();
+						$("#player31").show();
+						$("#player32id").show();
+						$("#player32").show();
+						$("#player33id").show();
+						$("#player33").show();
+						$("#player34id").show();
+						$("#player34").show();
+						$("#player41id").show();
+						$("#player41").show();
+						$("#player42id").show();
+						$("#player42").show();
+						$("#player43id").show();
+						$("#player43").show();
+						$("#player44id").show();
+						$("#player44").show();
+					}
+					
+					
 					return false;
+				}
+				
+				function addGame() {
+					$.post("http://api/games/", {suggest: json}, function(result){
+						var i1=$('#numberOfPlayers').val();
+						var j1=$('#numberOfKeys').val();
+						for (var i in i1) {
+							for (var j in j1) {
+								
+							}
+						}
+					});
 				}
 				
 				
