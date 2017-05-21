@@ -40,7 +40,6 @@ app.get('/api/games/:gameId', function (req, res) {
     }
 
     for (var idx in games) {
-        //console.log(games);
         var game = games[idx];
         if (game.id.toString() == gameId.toString()) {
             res.setHeader('Content-Type', 'application/json');

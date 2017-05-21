@@ -34,7 +34,10 @@ var code = "";
  */
 app.get('/game/:name', function (req, res) {
     var gameName = req.params.name;
-    request.get(config.webURL + '/api/games/' + gameName, function (err, response, body) {
+
+    console.log("Received request to start game with id "+ gameName);
+
+    request.get(config.webURL + '/api/games/' + gameName.toString(), function (err, response, body) {
         if (err) {
             console.log(err);
             return res.sendStatus(500);
@@ -58,6 +61,7 @@ app.get('/game/:name', function (req, res) {
                     return res.sendStatus(500);
             }
 
+            console.log("Game " + body);
             game = JSON.parse(body);
 
             clients = {};

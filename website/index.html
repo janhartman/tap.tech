@@ -123,15 +123,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading text-center">Easy setup using websocket server.</h2>
+                    <h2 class="section-heading text-center">Easy setup using our websocket server.</h2>
                     <!--<p>Our app is available to run on Windows by running the pinned setup.exe below. Now all you need is a mobile device and you are ready to rock!</p>-->
 					<br>
 					<ul style='font-size:1.4em;'>
-						<li>Clone project from our github.</li>
+						<li>Clone the project from our GitHub.</li>
 						<li><code>cd socket</code></li>
 						<li><code>npm install</code></li>
 						<li><code>node app.js</code></li>
-						<li>Check some of the games from the <a href="#list" class="page-scroll whiteHref">list below</a>!</li>
+						<li>Check out some of the games from the <a href="#list" class="page-scroll whiteHref">list below</a>!</li>
 						<li>Start playing!</li>
 					</ul>	
 					<br>
@@ -218,47 +218,6 @@
         </div>
     </section>
 
-    <!--<section class="cta">
-        <!--<div class="cta-content">
-            <div class="container">
-                <h2>Stop waiting.<br>Start building.</h2>
-                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
-            </div>
-        </div>
-        <div class="overlay"></div>
-    </section>-->
-		
-	<!--<section class="bg-primary" id="easySetup">
-		<div class="container">
-			<h2>Are you downloading the Windows installer right now and thinking of what to do in the meantime?</h2>
-			<ul style='font-size:1.4em;'>
-				<li>Check some of the games from the <a href="#list" class="page-scroll whiteHref">list below</a>!</li>
-				<li>Install the downloaded setup.exe on your desktop!</li>
-				<li>Start playing!</li>
-			</ul>
-			<br>
-			<p>Missed the download link for the Windows installer above? Get it <a href="#download" class="page-scroll whiteHref">here</a>!</p>
-		</div>
-	</section>-->	
-
-	<!-- SOCIAL LINKS -->
-    <!--<section id="contact" class="contact bg-primary">
-        <div class="container">
-            <h2>We <i class="fa fa-heart"></i> new friends!</h2>
-            <ul class="list-inline list-social">
-                <li class="social-twitter">
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li class="social-facebook">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li class="social-google-plus">
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                </li>
-            </ul>
-        </div>
-    </section>-->
-		
 	<section class="bg-primary text-center" id="list">
 		<div class="container" id="gameList">
 
@@ -270,53 +229,28 @@
 			<script type="text/javascript">
 
 				$(document).ready(function() {
-					
-					
+
 					//$('#list').css("max-height", '500px')
 					
 					var results = "";
 						$.get("/api/games/all",function(data){
-				  		//results = JSON.parse(data);
-					
-					
+
 						//GAME LIST
 						$("#gameList").append("<ul style='text-align:center;'>");
 						for (var i in data) {
-							//console.log(results[i][0]);
 							$("#gameList").append("<li style='font-size:1.4em; text-align: left; margin-left: 10em;'><a href='" + data[i].url + "'onclick=playGameById('" + data[i].id + "')><strong>" + data[i].name + "</strong></a> - max players: " + data[i].numOfPlayers + "</li>");
 						}
 						
 						$("#gameList").append("</ul><br>");
-						
-						
-						
+
 						//MISSING GAME?
 						$("#gameList").append("<h4>Is your favourite game missing from our list? Don't worry - you can add your own games and let us fully support them using this <a href='' id='showForm' class='whiteHref' onclick='return showForm();'>form</a>!</h4>");
-						
+						$("#gameList").append("<h5>Please type everything in lowerspace. For non-alphanumerical keys type e.g. <i>space</i>.</h5>");
 
-						//FORM
-						$("#gameList").append('<form hidden id="gameForm"><br>Game name:<br><input type="text" id="gameName" name="gameName" placeholder="Enter game name." style="min-width: 300px; color: #41464E;"><br><br>Game URL:<br><input type="text" id="gameUrl" name="gameUrl" placeholder="Enter game url." style="min-width: 300px; color: #41464E;"><br><br>Max players:<br><input type="text" id="numberOfPlayers" name="gameNumberOfPlayers" placeholder="Enter max number of players." style="min-width: 300px; color: #41464E; text-align:center;"><br><br>Max number of control keys:<br><input type="text" name="gameNumberOfKeys" id="numberOfKeys" placeholder="Enter required number of keys." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><br><a href="" class="btn btn-outline btn-xl" onclick="return getDataFromInput();">Generate key input fields</a></form>');
-						
-						$("#gameList").append('<div id="player11id" >Player 1 key 1:</div><br><input  type="text" name="player11" id="player11" placeholder="Player 1 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player12id" >Player 1 key 2:</div><br><input  type="text" name="player12" id="player12" placeholder="Player 1 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player13id" >Player 1 key 3:</div><br><input  type="text" name="player13" id="player13" placeholder="Player 1 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player14id" >Player 1 key 4:</div><br><input  type="text" name="player14" id="player14" placeholder="Player 1 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player21id" >Player 2 key 1:</div><br><input  type="text" name="player21" id="player21" placeholder="Player 2 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player22id" >Player 2 key 2:</div><br><input  type="text" name="player22" id="player22" placeholder="Player 2 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player23id" >Player 2 key 3:</div><br><input  type="text" name="player23" id="player23" placeholder="Player 2 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player24id" >Player 2 key 4:</div><br><input  type="text" name="player24" id="player24" placeholder="Player 2 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player31id" >Player 3 key 1:</div><br><input  type="text" name="player31" id="player31" placeholder="Player 3 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player32id" >Player 3 key 2:</div><br><input  type="text" name="player32" id="player32" placeholder="Player 3 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player33id" >Player 3 key 3:</div><br><input  type="text" name="player33" id="player33" placeholder="Player 3 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player34id" >Player 3 key 4:</div><br><input  type="text" name="player34" id="player34" placeholder="Player 3 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player41id" >Player 4 key 1:</div><br><input  type="text" name="player41" id="player41" placeholder="Player 4 key 1." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player42id" >Player 4 key 2:</div><br><input  type="text" name="player42" id="player42" placeholder="Player 4 key 2." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player43id" >Player 4 key 3:</div><br><input  type="text" name="player43" id="player43" placeholder="Player 4 key 3." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><div id="player44id" >Player 4 key 4:</div><br><input  type="text" name="player44" id="player44" placeholder="Player 4 key 4." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><br><br><a href="" onclick="addGame()" class="btn btn-outline btn-xl">Submit</a></form>');
-
-						console.log("adding listener");
-						
-	                    for (var i = 0; i < 4; i++) {
-	                        for (var j = 0; j < 4; j++) {
-	                            $("#id"+ ij).css("display", "none");
-								$("#id"+ ij + "id").css("display", "none");
-	                        }
-	                    }
-						
 
 					})
-					
-
-					
-					
 				});
 
-				
 				function playGameById(gameId){
 					
 					$.get("http://localhost:3000/game/" + gameId,function(data2){
@@ -326,275 +260,37 @@
 				}
 				
 				function showForm() {
-					$("#gameForm").show();
+					//FORM
+                    $("#gameList").append('<form id="gameForm"><br>Game name:<br><input type="text" id="gameName" name="gameName" placeholder="Enter game name." style="min-width: 300px; color: #41464E;"><br><br>Game URL:<br><input type="text" id="gameUrl" name="gameUrl" placeholder="Enter game url." style="min-width: 300px; color: #41464E;"><br><br>Max players:<br><input type="text" id="numberOfPlayers" name="gameNumberOfPlayers" placeholder="Enter max number of players." style="min-width: 300px; color: #41464E; text-align:center;"><br><br>Max number of control keys:<br><input type="text" name="gameNumberOfKeys" id="numberOfKeys" placeholder="Enter required number of keys." style="min-width: 300px; color: #41464E; text-align:center;"><br><br><br><a href="" class="btn btn-outline btn-xl" onclick="return getDataFromInput();">Generate key input fields</a><br><br>');
+
+                    $('#list').css("min-height", '950px');
+
 					return false;
 				}
 				
 				function getDataFromInput() {
 					var numberOfPlayers = $('#numberOfPlayers').val();
 					console.log("Players: " + numberOfPlayers);
-					
-					
 					var numberOfKeys = $('#numberOfKeys').val();
 					console.log("Keys: " + numberOfKeys);
-					
-					
-					//$('#list').css("min-height", '1700px')
-					
-					
-					/*
-					if (numberOfPlayers == 1 && numberOfKeys == 1) {
-						$("#player11id").show();
-						$("#player11").show();
-					}
-					else if (numberOfPlayers == 1 && numberOfKeys == 2) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-					}
-					else if (numberOfPlayers == 1 && numberOfKeys == 3) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player13id").show();
-						$("#player13").show();
-					}
-					else if (numberOfPlayers == 1 && numberOfKeys == 4) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player13id").show();
-						$("#player13").show();
-						$("#player14id").show();
-						$("#player14").show();
-					}
-					else if (numberOfPlayers == 2 && numberOfKeys == 1) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player21id").show();
-						$("#player21").show();
-					}
-					else if (numberOfPlayers == 2 && numberOfKeys == 2) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-					}
-					else if (numberOfPlayers == 2 && numberOfKeys == 3) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player13id").show();
-						$("#player13").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-						$("#player23id").show();
-						$("#player23").show();
-					}
-					else if (numberOfPlayers == 2 && numberOfKeys == 4) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player13id").show();
-						$("#player13").show();
-						$("#player14id").show();
-						$("#player14").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-						$("#player23id").show();
-						$("#player23").show();
-						$("#player24id").show();
-						$("#player24").show();
-					}
-					else if (numberOfPlayers == 3 && numberOfKeys == 1) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player31id").show();
-						$("#player31").show();
-					}
-					else if (numberOfPlayers == 3 && numberOfKeys == 2) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-						$("#player31id").show();
-						$("#player31").show();
-						$("#player32id").show();
-						$("#player32").show();
-					}
-					else if (numberOfPlayers == 3 && numberOfKeys == 3) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player13id").show();
-						$("#player13").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-						$("#player23id").show();
-						$("#player23").show();
-						$("#player31id").show();
-						$("#player31").show();
-						$("#player32id").show();
-						$("#player32").show();
-						$("#player33id").show();
-						$("#player33").show();
-					}
-					else if (numberOfPlayers == 3 && numberOfKeys == 4) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player13id").show();
-						$("#player13").show();
-						$("#player14id").show();
-						$("#player14").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-						$("#player23id").show();
-						$("#player23").show();
-						$("#player24id").show();
-						$("#player24").show();
-						$("#player31id").show();
-						$("#player31").show();
-						$("#player32id").show();
-						$("#player32").show();
-						$("#player33id").show();
-						$("#player33").show();
-						$("#player34id").show();
-						$("#player34").show();
-					}
-					else if (numberOfPlayers == 4 && numberOfKeys == 1) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player31id").show();
-						$("#player31").show();
-						$("#player41id").show();
-						$("#player41").show();
-					}
-					else if (numberOfPlayers == 4 && numberOfKeys == 2) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-						$("#player31id").show();
-						$("#player31").show();
-						$("#player32id").show();
-						$("#player32").show();
-						$("#player41id").show();
-						$("#player41").show();
-						$("#player42id").show();
-						$("#player42").show();
-					}
-					else if (numberOfPlayers == 4 && numberOfKeys == 3) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player13id").show();
-						$("#player13").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-						$("#player23id").show();
-						$("#player23").show();
-						$("#player31id").show();
-						$("#player31").show();
-						$("#player32id").show();
-						$("#player32").show();
-						$("#player33id").show();
-						$("#player33").show();
-						$("#player41id").show();
-						$("#player41").show();
-						$("#player42id").show();
-						$("#player42").show();
-						$("#player43id").show();
-						$("#player43").show();
-					}
-					else if (numberOfPlayers == 4 && numberOfKeys == 4) {
-						$("#player11id").show();
-						$("#player11").show();
-						$("#player12id").show();
-						$("#player12").show();
-						$("#player13id").show();
-						$("#player13").show();
-						$("#player14id").show();
-						$("#player14").show();
-						$("#player21id").show();
-						$("#player21").show();
-						$("#player22id").show();
-						$("#player22").show();
-						$("#player23id").show();
-						$("#player23").show();
-						$("#player24id").show();
-						$("#player24").show();
-						$("#player31id").show();
-						$("#player31").show();
-						$("#player32id").show();
-						$("#player32").show();
-						$("#player33id").show();
-						$("#player33").show();
-						$("#player34id").show();
-						$("#player34").show();
-						$("#player41id").show();
-						$("#player41").show();
-						$("#player42id").show();
-						$("#player42").show();
-						$("#player43id").show();
-						$("#player43").show();
-						$("#player44id").show();
-						$("#player44").show();
-					}
-					
-					*/
-					
+
+					var extra = numberOfKeys * numberOfPlayers * 100 + 1000;
+                    $('#list').css("min-height", extra.toString() + 'px');
+
+					var str = '<div id="player{i}{j}id">Player 1 key 1:</div><br><input type="text" name="player{i}{j}" id="player{i}{j}" placeholder="Player {i} key {j}." style="min-width: 300px; color: #41464E; text-align:center;"><br><br>';
+
+					for (var i = 1; i <= numberOfPlayers; i++) {
+					    for (var j = 1; j <= numberOfKeys; j++) {
+					        var replace1 = str.replace(/\{i}/g, i);
+                            $("#gameList").append(replace1.replace(/\{j}/g, j));
+					    }
+                     }
+
+                     $("#gameList").append('<br><br><a href="" onclick="addGame()" class="btn btn-outline btn-xl">Submit</a></form>');
+
 					return false;
 				}
 
-				/*
-				"name": "SkiFree",
-                "url": "http://basicallydan.github.io/skifree.js/",
-                "numOfPlayers": 1,
-                "keys": 4,
-                "keyBindings": {
-                  "player1": {
-                    "key1": "left",
-                    "key2": "right",
-                    "key3": "up",
-                    "key4": "down"
-                  }
-                }
-				 */
 				function addGame() {
 				    var json = {};
 				    json["name"] = $('#gameName').val();

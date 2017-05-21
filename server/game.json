@@ -161,5 +161,17 @@
       }
     },
     "id": 10
+  },
+  {
+    "name": "Forest Fire",
+    "url": "http://js13kgames.com/games/save-the-forest/index.html",
+    "numOfPlayers": "1",
+    "keys": "1",
+    "keyBindings": {
+      "player1": {
+        "key1": "space"
+      }
+    },
+    "id": 11
   }
 ]
